@@ -1,0 +1,474 @@
+<div class="min-h-screen">
+    <section class="w-full bg-white font-[kanit] text-gray-700 py-10">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="py-2">
+                <nav class="text-sm">
+                    <ol class="flex items-center gap-2">
+                        <li><a href="/">หน้าแรก</a></li>
+                        <li>›</li>
+
+                        <li><a href="/machines">เครื่องจักร</a></li>
+                        <li>›</li>
+
+                        <li>
+                            <a href="/machines/<%= machine.slug %>">
+                                <%= machine.slug %>
+                            </a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[40vh] my-6">
+                <div class="col-span-1 bg-white rounded-lg flex justify-center items-center">
+                    <div class="p-4">
+                        <img src="<%= machine.image_url %>" alt="<%= machine.model %>" class="w-full object-cover">
+                        
+                    </div>
+                </div>
+
+                <div class="p-6 col-span-1 bg-white border-2 border-slate-300 rounded">
+                    <div class="w-full py-4 border-b-2 border-slate-200">
+                        <h2 class="text-2xl font-semibold"><%= machine.brand_name %> <%= machine.model %></h2>
+                    </div>
+
+                    <div class="grid grid-cols-[40px_2fr_1fr] items-center gap-4 p-2 md:text-lg">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-label"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M16.52 7h-10.52a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h10.52a1 1 0 0 0 .78 -.375l3.7 -4.625l-3.7 -4.625a1 1 0 0 0 -.78 -.375" /></svg>
+                        </div>
+
+                        <div class="text-gray-600">
+                            ยี่ห้อ
+                        </div>
+
+                        <div class="font-semibold text-start">
+                            <%= machine.brand_name %>
+                        </div>
+
+                    </div>
+                    <div class="grid grid-cols-[40px_2fr_1fr] items-center gap-4 p-2 md:text-lg">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-tag"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3" /></svg>
+                        </div>
+
+                        <div class="text-gray-600">
+                            รุ่น
+                        </div>
+
+                        <div class="font-semibold text-start">
+                            <%= machine.model %>
+                        </div>
+
+                    </div>
+                    <div class="grid grid-cols-[40px_2fr_1fr] items-center gap-4 p-2 md:text-lg">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-autofit-height"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" /><path d="M18 14v7" /><path d="M18 3v7" /><path d="M15 18l3 3l3 -3" /><path d="M15 6l3 -3l3 3" /></svg>
+                        </div>
+
+                        <div class="text-gray-600">
+                            ระยะทำงานสูงสุด
+                        </div>
+
+                        <div class="font-semibold text-start">
+                            <%= machine.working_height %> เมตร
+                        </div>
+
+                    </div>
+
+                    <div class="grid grid-cols-[40px_2fr_1fr] items-center gap-4 p-2 md:text-lg">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-line-height"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 8l3 -3l3 3" /><path d="M3 16l3 3l3 -3" /><path d="M6 5l0 14" /><path d="M13 6l7 0" /><path d="M13 12l7 0" /><path d="M13 18l7 0" /></svg>
+                        </div>
+
+                        <div class="text-gray-600">
+                            ความสูงพื้นยืน
+                        </div>
+
+                        <div class="font-semibold text-start">
+                            <%= machine.platform_height %> เมตร
+                        </div>
+
+                    </div>
+
+                    <div class="grid grid-cols-[40px_2fr_1fr] items-center gap-4 p-2 md:text-lg">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-weight"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 6a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6.835 9h10.33a1 1 0 0 1 .984 .821l1.637 9a1 1 0 0 1 -.984 1.179h-13.604a1 1 0 0 1 -.984 -1.179l1.637 -9a1 1 0 0 1 .984 -.821" /></svg>
+                        </div>
+
+                        <div class="text-gray-600">
+                            กระเช้ารับน้ำหนัก
+                        </div>
+
+                        <div class="font-semibold text-start">
+                            <%= machine.capacity_load %> กิโลกรัม
+                        </div>
+
+                    </div>
+
+                    <div class="grid grid-cols-[40px_2fr_1fr] items-center gap-4 p-2 md:text-lg">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-bulldozer"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M2 17a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M12 17a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M19 13v4a2 2 0 0 0 2 2h1" /><path d="M14 19h-10" /><path d="M4 15h10" /><path d="M9 11v-5h2a3 3 0 0 1 3 3v6" /><path d="M5 15v-3a1 1 0 0 1 1 -1h8" /><path d="M19 17h-3" /></svg>
+                        </div>
+
+                        <div class="text-gray-600">
+                            น้ำหนักเครื่องจักร
+                        </div>
+
+                        <div class="font-semibold text-start">
+                            <%= machine.machine_weight %> กิโลกรัม
+                        </div>
+
+                    </div>
+
+                    <div class="grid grid-cols-[40px_2fr_1fr] items-center gap-4 p-2 md:text-lg">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-engine"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 10v6" /><path d="M12 5v3" /><path d="M10 5h4" /><path d="M5 13h-2" /><path d="M6 10h2l2 -2h3.382a1 1 0 0 1 .894 .553l1.448 2.894a1 1 0 0 0 .894 .553h1.382v-2h2a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-2v-2h-3v2a1 1 0 0 1 -1 1h-3.465a1 1 0 0 1 -.832 -.445l-1.703 -2.555h-2v-6" /></svg>
+                        </div>
+
+                        <div class="text-gray-600">
+                            แหล่งพลังงาน
+                        </div>
+
+                        <div class="font-semibold text-start">
+                            <%= machine.power_th %>
+                        </div>
+
+                    </div>
+
+                    <a href="https://line.me/R/ti/p/rodkrachaothai" target="_blank" rel="noopener" class="">
+                        <div class="px-5 py-3 text-center bg-blue-800 hover:bg-blue-700 text-gray-100 rounded md:text-lg mt-6">
+                            ขอใบเสนอราคา
+                        </div>
+                    </a>
+                    <a href="tel:0954240440" class="">
+                        <div class="px-5 py-3 text-center border-2 border-blue-800 hover:border-blue-700 text-blue-800 rounded md:text-lg mt-6">
+                            สอบถามข้อมูลเพิ่มเติม
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            
+
+            
+            
+        </div>     
+    </section>
+
+
+    <section class="w-full bg-white font-[kanit] text-gray-700 py-10">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="w-full">
+                <h2 class="text-xl md:text-2xl py-4">สเปคเครื่องจักร</h2>
+                <div class="w-full bg-white border-2 border-slate-300 rounded min-h-[20vh] p-4">
+                    <table class="w-full md:text-lg md:text-base">
+                        <tbody>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="w-3/5 text-left px-6 py-4 font-medium text-gray-700">
+                                    รุ่น
+                                </th>
+                                <td class="px-6 py-4 text-gray-900">
+                                    <%= machine.model %>
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ยี่ห้อ
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.brand_name %>
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ประเภท
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.type_name %>
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ความสูงทำงาน
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.working_height %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ความสูงพื้นกระเช้า
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.platform_height %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    สูงสุดขณะยื่นแนวราบ
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.up_and_over_height || '-' %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ระยะยื่นแนวนอน
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.horizontal_reach || '-' %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    กระเช้ารับน้ำหนัก
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.capacity_load %> กก.
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    น้ำหนักเครื่องจักร
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= Number(machine.machine_weight).toLocaleString('th-TH') %> กก.
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ความเร็วเคลื่อนที่
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.drive_speed %> 
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ความสามารถขึ้นทางลาด
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.gradeability %> 
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    แหล่งพลังงาน
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.power_th %> 
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="w-full">
+                <h2 class="text-xl md:text-2xl pb-4 pt-10">ขนาดเครื่องจักร</h2>
+                <div class="w-full bg-white border-2 border-slate-300 rounded min-h-[20vh] p-4">
+                    <table class="w-full md:text-lg md:text-base">
+                        <tbody>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="w-3/5 text-left px-6 py-4 font-medium text-gray-700">
+                                    ความสูงพื้นยืน
+                                </th>
+                                <td class="px-6 py-4 text-gray-900">
+                                    <%= machine.platform_height_stowed %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ความสูงรวมราวกันตก
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.platform_railing_height || '-' %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ความกว้างกระเช้า
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.platform_width %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ความยาวกระเช้า
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.platform_length %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ขยายพื้นกระเช้า
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.platform_extension || '-' %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ความสูงเครื่องจักร
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.machine_height || '-' %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ความกว้างเครื่องจักร
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.machine_width || '-' %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ความยาวเครื่องจักร
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.machine_length %> เมตร
+                                </td>
+                            </tr>
+
+                            <tr class="odd:bg-white even:bg-slate-50 border-b">
+                                <th class="text-left px-6 py-4 font-medium text-gray-700">
+                                    ระยะพ้นพื้น
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= machine.grounded_clearance %> เมตร
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            
+            
+        </div>     
+    </section> 
+ 
+    <section class="w-full bg-white font-[kanit] text-gray-700 py-10">
+        <div class="max-w-7xl mx-auto p-6">
+            <div class="w-full min-h-[10vh] bg-blue-900 p-6 rounded text-gray-100 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="items-center">
+                    <h2 class="text-xl md:text-2xl py-2">
+                        สนใจ เช่า เครื่องจักรรุ่น <%= machine.model%> ?
+                    </h2>
+                    <p class="md:text-lg">ติตด่อเราเพื่อขอใบเสนอราคาหรือสอบถามข้อมูลเพิ่มเติม</p>
+                </div>
+                <div class="flex gap-4 items-center flex-col md:flex-row">
+                    <a href="https://line.me/R/ti/p/rodkrachaothai" target="_blank" rel="noopener" class="">
+                        <div class="px-5 py-3 text-center bg-gray-100 hover:bg-white text-blue-800 rounded md:text-lg min-w-48">
+                            ขอใบเสนอราคา
+                        </div>
+                    </a>
+                    <a href="tel:0954240440" class="">
+                        <div class="px-5 py-3 text-center border-2 border-gray-200 hover:bg-gray-100/10 text-gray-100 rounded md:text-lg min-w-48">
+                            สอบถามข้อมูลเพิ่มเติม
+                        </div>
+                    </a>
+
+                </div>
+                
+            </div>
+     
+            
+        </div>     
+    </section>
+
+    <section class="w-full bg-white font-[kanit] text-gray-700">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-2xl font-semibold pt-6">เครื่องจักรรุ่นใกล้เคียง</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 py-10">
+
+                <% if (lowerMachine) { %>
+                <div class="grid grid-rows-2 rounded border-2 border-slate-300">
+                    <div class="p-4">
+                        <img src="<%= lowerMachine.image_url %>" alt="<%= lowerMachine.model %>" class="w-full object-contain h-48 p-4">
+                        
+                    </div>
+                    <div class="p-4 bg-slate-200">
+                        <div>
+                            <h2 class="tracking-wide text-xl font-semibold"><%= lowerMachine.type_name %> <%= lowerMachine.platform_height %> เมตร</h2>
+                            <p class="tracking-wide font-light"><%= lowerMachine.brand_name %> <%= lowerMachine.model %></p>
+                        </div>
+                        <div class="my-4">
+                            <p class="">ความสูงทำงาน <%= lowerMachine.working_height %> เมตร</p>
+                            <p class="">รับน้ำหนัก <%= lowerMachine.capacity_load %> กิโลกรัม</p>
+                        </div>
+                        <div class="flex justify-center mt-4">
+                            <a href="/machines/<%= lowerMachine.slug %>" class="px-4 py-2 bg-blue-800 rounded shadow hover:bg-blue-700 text-gray-100">
+                            ดูรายละเอียด
+                        </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <% } %>
+
+
+                <% if (higherMachine) { %>
+                                <div class="grid grid-rows-2 rounded border-2 border-slate-300">
+                    <div class="p-4">
+                        <img src="<%= higherMachine.image_url %>" alt="<%= higherMachine.model %>" class="w-full object-contain h-48 p-4">
+                        
+                    </div>
+                    <div class="p-4 bg-slate-200">
+                        <div>
+                            <h2 class="tracking-wide text-xl font-semibold"><%= higherMachine.type_name %> <%= higherMachine.platform_height %> เมตร</h2>
+                            <p class="tracking-wide font-light"><%= higherMachine.brand_name %> <%= higherMachine.model %></p>
+                        </div>
+                        <div class="my-4">
+                            <p class="">ความสูงทำงาน <%= higherMachine.working_height %> เมตร</p>
+                            <p class="">รับน้ำหนัก <%= higherMachine.capacity_load %> กิโลกรัม</p>
+                        </div>
+                        <div class="flex justify-center mt-4">
+                            <a href="/machines/<%= higherMachine.slug %>" class="px-4 py-2 bg-blue-800 rounded shadow hover:bg-blue-700 text-gray-100">
+                            ดูรายละเอียด
+                        </a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <% } %>
+
+            </div>
+            
+        </div>     
+    </section> 
+
+</div>

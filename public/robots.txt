@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# block system pages
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+
+# block uploads
+Disallow: /uploads/
+
+# block query params
+Disallow: /*?
+
+# sitemap
+Sitemap: https://www.rodkrachaothai.com/sitemap.xml

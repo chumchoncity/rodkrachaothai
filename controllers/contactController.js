@@ -11,16 +11,16 @@ exports.contact = async (req, res) => {
             meta: {
 
                 title:
-                    "บริการให้เช่า บูมลิฟท์ เอ็กซ์ลิฟท์ | รถกระเช้าไทย",
+                    "ติดต่อเรา | รถกระเช้าไทย",
 
                 description:
-                    "บริการเครื่องจักร สำหรับทำงานบนที่สูง รถกระเช้า บูมลิฟท์ เอ็กซ์ลิฟท์ สามารถเช่าแบบ รายวัน รายเดือน และ รายปี",
+                    "ติดต่อสอบถามรายละเอียด การเช่า การใช้งาน และพร้อมให้คำปรึกษา",
 
                 image:
                     "https://www.rodkrachaothai.com/images/default-og.png",
 
                 url:
-                    "https://www.rodkrachaothai.com"
+                    "https://www.rodkrachaothai.com/contact"
                 }       
         });
         } catch (error) {

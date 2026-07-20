@@ -46,6 +46,9 @@ exports.machineDetail = async (req, res) => {
             machine.type_id,
             machine.working_height
         );
+        const title = `${machine.type_name} ${machine.brand_name} ${machine.model} ระยะทำงานสูง ${machine.working_height} เมตร`;
+
+        const description = `${machine.type_name} ${machine.brand_name} รุ่น ${machine.model} ระยะความสูงทำงาน ${machine.working_height} เมตร พื้นยืนรองรับน้ำหนัก ${machine.capacity_load} กิโลกรัม ขับเคลื่อนด้วยพลังงาน ${machine.power_th}`;
         
     
         res.render("machines/machineDetail", {
@@ -55,17 +58,15 @@ exports.machineDetail = async (req, res) => {
             lowerMachine,
             meta: {
 
-                title:
-                    "เครื่องจักรทำงานบนที่สูง บูมลิฟท์ เอ็กซ์ลิฟท์ | รถกระเช้าไทย",
+                title,
+                description,
 
-                description:
-                    "รถกระเช้าเครื่องจักรทำงานบนที่สูง มีทั้งบูมลิฟท์ และ เอ็กซ์ลิฟท์ ระยะทำงานตั้งแต่ 6-43 เมตรเลือกใช้ตามความเหมาะสมหน้างาน",
-
-                image:
-                    "https://www.rodkrachaothai.com/images/default-og.png",
+                image: machine.image
+                    ? `https://www.rodkrachaothai.com/uploads/machines/${machine.image_url}`
+                    : "https://www.rodkrachaothai.com/images/default-og.png",
 
                 url:
-                    "https://www.rodkrachaothai.com/machines/:slug"
+                    `https://www.rodkrachaothai.com/machines/${slug}`
                 }       
         });
         } catch (error) {

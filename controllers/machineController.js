@@ -6,11 +6,21 @@ const machineModel = require("../models/machineModel");
 exports.machineAll = async (req, res) => {
     try {  
         const machineAll = await machineModel.machineAll();
+
+        const filters = {
+        brand_name: req.query.brand_name || "",
+        type_name: req.query.type_name || "",
+        working_height: req.query.working_height || ""
+    };
+
+        const machines = await machineModel.getMachines(filters);
         
     
         res.render("machines/machines", {
             currentPage: "รายการเครื่องจักรทั้งหมด",
             machineAll,
+            machines,
+            filters,
             meta: {
 
                 title:

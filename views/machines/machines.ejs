@@ -1,11 +1,11 @@
 <div class="min-h-screen">
-    <section class="relative text-center min-h-[60vh] md:min-h-[60vh] w-full">
+    <section class="relative text-center min-h-[40vh] md:min-h-[55vh] w-full">
         <div class="absolute inset-0 max-w-7xl mx-auto p-6 flex flex-col z-10 h-full">
             <div class="text-gray-100 font-[kanit] p-4">
                 <h2 class="text-3xl md:text-5xl font-semibold text-start p-1">เครื่องจักร</h2>
                 <h2 class="text-2xl md:text-3xl font-semibold text-start p-1 text-orange-400">MACHINES</h2>
-                <p class="text-xl md:text-2xl text-start p-1 mt-6">รถกระเช้า เอ็กซ์ลิฟท์ บูมลิฟท์</p>
-                <p class="text-xl md:text-2xl text-start p-1">ตอบโจทย์ทุกงาน ในที่สูง</p>
+                <p class="text-lg md:text-xl text-start p-1 mt-2">รถกระเช้า เอ็กซ์ลิฟท์ บูมลิฟท์</p>
+                <p class="text-lg md:text-xl text-start p-1">ตอบโจทย์ทุกงาน ในที่สูง</p>
 
             </div>
             <div class="absolute left-10 bottom-10 text-gray-100 flex gap-2 md:gap-6 z-10 font-[kanit]">
@@ -47,12 +47,66 @@
 
 
     <section class="w-full bg-white font-[kanit] text-gray-700">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-2xl font-semibold pt-6">รายการเครื่องจักรทั้งหมด</h2>
+        <div class="max-w-7xl mx-auto p-6">
+            <h2 class="text-2xl font-semibold py-6">รายการเครื่องจักรทั้งหมด</h2>
+            <div class="w-full rounded p-4 border-2 border-slate-300 shadow">
+                <form action="/machines" method="GET" class="grid grid-cols-1 md:grid-cols-4 gap-3">
+
+                    <select name="brand_name" class="border-2 border-slate-200 rounded px-4 py-2">
+                        <option value="">
+                            ทุกแบรนด์
+                        </option>
+
+                        <option value="Genie"
+                            <%= filters.brand_name === "Genie" ? "selected" : "" %>>
+                            Genie
+                        </option>
+
+                        <option value="JLG"
+                            <%= filters.brand_name === "JLG" ? "selected" : "" %>>
+                            JLG
+                        </option>
+
+                    </select>
+
+                    <select name="type_name" class="border-2 border-slate-200 rounded px-4 py-2">
+
+                        <option value="">ทุกประเภท</option>
+
+                        <option value="บูมลิฟท์"
+                            <%= filters.type_name === "บูมลิฟท์" ? "selected" : "" %>>
+                            บูมลิฟท์
+                        </option>
+
+                        <option value="เอ็กซ์ลิฟท์"
+                            <%= filters.type_name === "เอ็กซ์ลิฟท์" ? "selected" : "" %>>
+                            เอ็กซ์ลิฟท์
+                        </option>
+
+                    </select>
+
+                    <input
+                        type="number"
+                        name="working_height"
+                        placeholder="ความสูงขั้นต่ำ"
+                        value="<%= filters.working_height %>"
+                        class="border-2 border-slate-200 rounded px-4 py-2 placeholder:text-gray-700">
+
+                    <div class="flex justify-end mt-6 md:mt-0">
+                        <button type="submit" class="px-6 py-2 w-full md:min-w-[80px] rounded bg-blue-800 text-gray-100 grid grid-cols-[24px_1fr] w-full items-center">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+                            </span>
+                            ค้นหา
+                        </button>
+                    </div>
+
+                </form>
+            </div>
             
             
                 <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-10">
-                    <% machineAll.forEach(machine => { %>
+                    <% machines.forEach(machine => { %>
                     <div class="grid grid-rows-2 rounded border-2 border-slate-300 shadow-md">
                         <div class="p-4">
                             <img src="<%= machine.image_url %>" alt="<%= machine.model %>" class="w-full object-contain h-48 p-4">

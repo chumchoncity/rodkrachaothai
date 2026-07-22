@@ -1,0 +1,94 @@
+<div class="w-full flex justify-center items-center min-h-screen p-6 font-[kanit]">
+        <form
+        method="POST"
+        action="/auth/login"
+        class="bg-white p-6 rounded-lg shadow-lg sm:max-w-md w-full border-2 border-gray-300 md:min-w-[480px]">
+                <h1 class="text-2xl font-semibold mb-6 text-center">เข้าสู่ระบบ</h1>
+                
+                
+                <input  type="email"
+                        name="email"
+                        required
+                        placeholder="อีเมล"
+                        class="w-full my-4 p-2 border border-gray-300 rounded my-2 placeholder-gray-400 focus:outline-none focus:ring-gray-400 focus:ring-1 hover:bg-gray-100">
+
+                <div class="relative">
+                        <input  type="password"
+                        name="password"
+                        id="password"
+                        placeholder="รหัสผ่าน"
+                        required
+                        class="w-full my-4 p-2 border border-gray-300 rounded my-2  placeholder-gray-400 focus:outline-none focus:ring-gray-400 focus:ring-1 hover:bg-gray-100">
+                        <button
+                        type="button"
+                        id="togglePassword"
+                        onclick="togglePassword()"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-800"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+
+                        </button>
+
+                        <script>
+                        const input = document.getElementById("password");
+                        const toggle = document.getElementById("togglePassword");
+
+                        const eyeOpen = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        `;
+
+                        const eyeOff = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.956 9.956 0 012.042-3.368M6.228 6.228A9.956 9.956 0 0112 5c4.477 0 8.268 2.943 9.542 7a10.056 10.056 0 01-4.132 5.411M15 12a3 3 0 01-3 3m0-6a3 3 0 013 3m6 6L3 3" />
+                        </svg>
+                        `;
+
+                        let isHidden = true;
+
+                        toggle.addEventListener("click", () => {
+                        isHidden = !isHidden;
+
+                        input.type = isHidden ? "password" : "text";
+
+                        toggle.innerHTML = isHidden ? eyeOpen : eyeOff;
+                        });
+                        </script>
+                </div>
+
+                <button
+                type="submit"
+                class="w-full bg-[#0E4C81] hover:bg-blue-800 text-white p-2 rounded mt-4 transition">
+                        เข้าสู่ระบบ
+                </button>
+                <div class="flex flex-col md:flex-row gap-6 mt-10">
+                        <div class="flex-1 flex justify-center md:my-6">
+                                <a
+                                href="/auth/forgot-password"
+                                class="text-center w-full border-2 border-gray-300 hover:bg-gray-100 p-2 rounded transition text-[#F75420]">
+                                        ลืมรหัสผ่าน
+                                </a>
+                        </div>
+                        <div class="flex-1 flex justify-center md:my-6">
+                                <a
+                                href="/auth/register-user"
+                                class="text-center w-full border-2 border-gray-300 hover:bg-gray-100 p-2 rounded transition text-[#F75420]">
+                                        สมัครฝากประวัติ
+                                </a>
+                        </div>
+
+                </div>
+                
+
+        </form>
+</div>

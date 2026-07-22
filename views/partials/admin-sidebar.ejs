@@ -1,0 +1,96 @@
+<div id="sidebar" class="w-64 bg-slate-300 text-gray-600
+h-screen overflow-y-auto
+p-6 font-[kanit]
+fixed left-0 top-0
+transform -translate-x-full
+md:translate-x-0 md:static md:translate-x-0
+transition-transform duration-300
+z-40">
+
+  <div class="flex justify-end">
+    <button id="closeBtn" class="mb-4 text-xl md:hidden">✕</button>
+  </div>
+
+  <nav class="space-y-3 text-sm">
+
+    <a href="/admin/dashboard/<%= userId %>"
+       class="block px-4 py-2 rounded 
+       <%= currentPage === 'dashboard' ? 'bg-slate-200' : 'hover:bg-slate-200' %>">
+       Dashboard
+    </a>
+
+    <a href="/auth/logout"
+       class="block px-4 py-2 mt-6 rounded bg-red-600 hover:bg-red-700 text-gray-100">
+       Logout
+    </a>
+
+  </nav>
+</div>
+<script>
+
+  const sidebar = document.getElementById("sidebar");
+  const openBtn = document.getElementById("openBtn");
+  const closeBtn = document.getElementById("closeBtn");
+
+  // เปิด sidebar
+  function openSidebar() {
+
+    sidebar.classList.remove("-translate-x-full");
+
+  }
+
+  // ปิด sidebar
+  function closeSidebar() {
+
+    sidebar.classList.add("-translate-x-full");
+
+  }
+
+  // กดปุ่มเปิด
+  openBtn.addEventListener("click", openSidebar);
+  closeBtn.addEventListener("click", closeSidebar);
+
+  // -------------------
+  // ระบบ swipe
+  // -------------------
+
+  let startX = 0;
+  let endX = 0;
+
+  // เริ่มแตะ
+  document.addEventListener("touchstart", (e) => {
+
+    startX = e.changedTouches[0].screenX;
+
+  });
+
+  // ปล่อยนิ้ว
+  document.addEventListener("touchend", (e) => {
+
+    endX = e.changedTouches[0].screenX;
+
+    handleSwipe();
+
+  });
+
+  function handleSwipe() {
+
+    const distance = endX - startX;
+
+    // ปัดขวา = เปิด
+    if (distance > 80) {
+
+      openSidebar();
+
+    }
+
+    // ปัดซ้าย = ปิด
+    if (distance < -80) {
+
+      closeSidebar();
+
+    }
+
+  }
+
+</script>

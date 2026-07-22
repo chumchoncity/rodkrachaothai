@@ -32,8 +32,22 @@ const pool = require("./config/db");
     }
 })();
 
+app.use(session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false
+}));
+
 const publicRoutes = require("./routes/publicRoutes");
 app.use("/", publicRoutes);
+const adminRoutes = require("./routes/adminRoutes");
+app.use("/", adminRoutes);
+const authRoutes = require("./routes/authRoutes");
+app.use("/", authRoutes);
+
+const flash = require("connect-flash");
+
+
 
 //sitemap
 const sitemapRoute = require('./routes/sitemapRoute');

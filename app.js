@@ -44,6 +44,8 @@ const adminRoutes = require("./routes/adminRoutes");
 app.use("/", adminRoutes);
 const authRoutes = require("./routes/authRoutes");
 app.use("/", authRoutes);
+const articlesRoutes = require("./routes/articlesRoutes");
+app.use("/", articlesRoutes);
 
 const flash = require("connect-flash");
 

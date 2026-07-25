@@ -7,6 +7,8 @@ const {isAdmin} = require("../middlewares/authMiddleware");
 
 //admin dashboard
 router.get("/admin/dashboard/:id", isAdmin, adminController.adminDashboard);
+router.get("/admin/articles", isAdmin, adminController.articlesList);
+router.get("/admin/create-article", isAdmin, adminController.showCreateArticle);
 
 
 //-------------------------------

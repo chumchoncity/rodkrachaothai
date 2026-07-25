@@ -1,13 +1,52 @@
-
+const articleModel = require("../models/articleModel");
 
 
 exports.articles = async (req, res) => {
     try {  
+
+        const articles = await articleModel.getAllArticlesPublic();
         
         
     
-        res.render("home/articles", {
+        res.render("articles/index", {
             currentPage: "articles",
+            articles,
+            meta: {
+
+                title:
+                    "บทความ และสาระความรู้ เกี่ยวกับรถกระเช้าบูมลิฟท์ เอ็กซ์ลิฟท์ | รถกระเช้าไทย",
+
+                description:
+                    "เรียนรู้และทำความเข้าใจให้มากขึ้นเกี่ยวกับ เครื่องจักร บูมลิฟท์ และเอ็กซ์ลิฟท์",
+
+                image:
+                    "https://www.rodkrachaothai.com/images/default-og.png",
+
+                url:
+                    "https://www.rodkrachaothai.com/articles"
+                }       
+        });
+        } catch (error) {
+            console.error(error);
+            res.send("Index error")
+        }
+};
+
+exports.articleDetail = async (req, res) => {
+    try {  
+
+        const { slug } = req.params;
+
+        const article = await articleModel.articleDetail(slug);
+
+        const articles = await articleModel.latestArticles();
+        
+        
+    
+        res.render("articles/article-detail", {
+            currentPage: "article-detail",
+            article,
+            articles,
             meta: {
 
                 title:

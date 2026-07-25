@@ -1,0 +1,108 @@
+<main class="bg-gray-50">
+
+    <!-- Hero -->
+    <section class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+
+            <!-- Breadcrumb -->
+            <nav class="text-sm text-gray-500 mb-6">
+                <a href="/">หน้าแรก</a>
+                <span class="mx-2">/</span>
+                <a href="/articles">บทความ</a>
+                <span class="mx-2">/</span>
+                <span><%= article.title %></span>
+            </nav>
+
+            <div class="grid lg:grid-cols-3 gap-10">
+
+                <!-- Content -->
+                <div class="lg:col-span-2">
+
+                    <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm">
+                        <%= article.category_name %>
+                    </span>
+
+                    <h1 class="text-4xl font-bold mt-4 leading-tight">
+                        <%= article.title %>
+                    </h1>
+
+                    <div class="flex items-center gap-6 text-gray-500 mt-5 text-sm">
+
+                        <span class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-week"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M7 14h.013" /><path d="M10.01 14h.005" /><path d="M13.01 14h.005" /><path d="M16.015 14h.005" /><path d="M13.015 17h.005" /><path d="M7.01 17h.005" /><path d="M10.01 17h.005" /></svg> 
+                            
+                            <%= new Date(article.created_at).toLocaleDateString('th-TH', {
+                                        day: 'numeric',
+                                        month: 'short',
+                                        year: '2-digit'
+                                    }) %>
+                        </span>
+
+                        <span class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg> 
+                            <%= article.view_count %>
+                        </span>
+
+                    </div>
+
+                    <img
+                        src="<%= article.featured_image %>"
+                        class="w-full rounded-xl mt-8"
+                        alt="<%= article.title %>">
+
+                    <div class="prose prose-lg max-w-none mt-8">
+
+                        <%- article.content %>
+
+                    </div>
+
+                </div>
+
+                <!-- Sidebar -->
+                <aside>
+
+                    <div class="sticky top-24">
+
+                        <h2 class="font-bold text-xl mb-5">
+                            บทความแนะนำ
+                        </h2>
+
+                        <% articles.forEach(item=> { %>
+
+                            <% if(item.id != article.id){ %>
+
+                                <a href="/articles/<%= item.slug %>"
+                                    class="flex gap-4 mb-5 bg-white rounded-xl p-3 hover:shadow-lg transition">
+
+                                    <img
+                                        src="<%= item.featured_image %>"
+                                        class="w-28 h-20 object-cover rounded-lg">
+
+                                    <div>
+
+                                        <h3 class="font-semibold line-clamp-2">
+                                            <%= item.title %>
+                                        </h3>
+
+                                        <p class="text-sm text-gray-500 mt-2">
+                                            <%= item.created_at %>
+                                        </p>
+
+                                    </div>
+
+                                </a>
+
+                            <% } %>
+
+                        <% }) %>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>

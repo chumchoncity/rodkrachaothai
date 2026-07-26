@@ -1,1 +1,222 @@
-<h1 class="text-2xl">แก้ไขบทความ</h1>
+<div class="max-w-5xl mx-auto p-6">
+
+    <h1 class="text-3xl font-bold mb-8">
+        แก้ไขบทความ
+    </h1>
+
+    <form
+        action="/admin/articles/edit/<%= article.id %>"
+        method="POST"
+        enctype="multipart/form-data"
+        class="space-y-6"
+    >
+
+        <div>
+
+            <label class="font-medium">
+                ชื่อบทความ
+            </label>
+
+            <input
+                type="text"
+                name="title"
+                value="<%= article.title %>"
+                class="w-full border rounded p-3 mt-2"
+            >
+
+        </div>
+        <div>
+
+            <label class="font-medium">
+                slug
+            </label>
+
+            <input
+                type="text"
+                name="slug"
+                value="<%= article.slug %>"
+                class="w-full border rounded p-3 mt-2"
+            >
+
+        </div>
+
+        <div>
+
+            <label>
+                คำอธิบายสั้น
+            </label>
+
+            <textarea
+                name="short_description"
+                rows="4"
+                class="w-full border rounded-lg p-3 mt-2"
+            ><%= article.short_description %></textarea>
+
+        </div>
+
+        <div>
+
+            <label>
+                เนื้อหา
+            </label>
+
+            <textarea
+                name="content"
+                rows="15"
+                class="w-full border rounded-lg p-3 mt-2"
+            ><%= article.content %></textarea>
+
+        </div>
+
+        <div>
+            <label class="block font-medium">รูปปก</label>
+
+            <% if (article.featured_image) { %>
+                <img
+                    src="/images/articles/<%= article.featured_image %>"
+                    class="w-48 rounded mb-3"
+                >
+            <% } %>
+
+            <input
+                type="file"
+                name="featured_image"
+                accept="image/*"
+                class="w-full border rounded-lg p-3"
+            >
+
+            <input
+                type="hidden"
+                name="old_featured_image"
+                value="<%= article.featured_image %>"
+            >
+        </div>
+        <div>
+
+            <label>
+                Meta Title
+            </label>
+
+            <input
+                type="text"
+                name="meta_title"
+                value="<%= article.meta_title %>"
+                class="w-full border rounded-lg p-3 mt-2"
+            >
+
+        </div>
+
+        <div>
+
+            <label>
+                Meta Description
+            </label>
+
+            <textarea
+                name="meta_description"
+                rows="3"
+                class="w-full border rounded-lg p-3 mt-2"
+            ><%= article.meta_description %></textarea>
+
+        </div>
+        <div>
+
+            <label>
+                OG Title
+            </label>
+
+            <input
+                type="text"
+                name="og_title"
+                value="<%= article.og_title %>"
+                class="w-full border rounded-lg p-3 mt-2"
+            >
+
+        </div>
+        <div>
+
+            <label>
+                OG Description
+            </label>
+
+            <textarea
+                name="og_description"
+                rows="3"
+                class="w-full border rounded-lg p-3 mt-2"
+            ><%= article.og_description %></textarea>
+
+        </div>
+        <div>
+
+            <label>
+                Canonical Url
+            </label>
+
+            <input
+                type="text"
+                name="canonical_url"
+                value="<%= article.canonical_url %>"
+                class="w-full border rounded-lg p-3 mt-2"
+            >
+
+        </div>
+        <div>
+
+            <label>
+                Keywords
+            </label>
+
+            <input
+                type="text"
+                name="keywords"
+                value="<%= article.keywords %>"
+                class="w-full border rounded-lg p-3 mt-2"
+            >
+
+        </div>
+        <div>
+            <label class="block font-medium">
+                บทความแนะนำ
+            </label>
+
+            <select
+                name="is_featured"
+                class="w-full border rounded-lg p-3 mt-2"
+            >
+                <option value="0" <%= article.is_featured == 0 ? 'selected' : '' %>>
+                    ไม่แนะนำ
+                </option>
+
+                <option value="1" <%= article.is_featured == 1 ? 'selected' : '' %>>
+                    แนะนำ
+                </option>
+            </select>
+        </div>
+        <div>
+            <label class="block font-medium">
+                สถานะโพสต์
+            </label>
+
+            <select
+                name="status"
+                class="w-full border rounded-lg p-3 mt-2"
+            >
+                <option value="draft" <%= article.status === 'draft' ? 'selected' : '' %>>
+                    Draft
+                </option>
+
+                <option value="published" <%= article.status === 'published' ? 'selected' : '' %>>
+                    Published
+                </option>
+            </select>
+        </div>
+
+        <button
+            class="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600"
+        >
+            บันทึกการแก้ไข
+        </button>
+
+    </form>
+
+</div>

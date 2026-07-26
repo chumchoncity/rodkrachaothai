@@ -61,7 +61,7 @@
                     <td class="p-4">
 
                         <img
-                            src="<%= article.featured_image %>"
+                            src="/images/articles/<%= article.featured_image %>"
                             class="w-28 h-16 object-cover rounded">
 
                     </td>
@@ -74,7 +74,7 @@
 
                         <div class="text-sm text-gray-500">
 
-                            /knowledge/<%= article.slug %>
+                            /articles/<%= article.slug %>
 
                         </div>
 
@@ -123,7 +123,7 @@
                         <div class="flex justify-center gap-2">
 
                             <a
-                                href="/knowledge/<%= article.slug %>"
+                                href="/articles/<%= article.slug %>"
                                 target="_blank"
                                 class="px-3 py-1 rounded bg-slate-200">
 

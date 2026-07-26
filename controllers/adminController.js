@@ -1,5 +1,7 @@
 const adminModel = require("../models/adminModel");
 const articleModel = require("../models/articleModel");
+const fs = require("fs");
+const path = require("path");
 
 
 exports.adminDashboard = async (req, res) => {
@@ -53,5 +55,89 @@ exports.showCreateArticle = async (req, res) => {
         console.error(error);
         res.send("Create Article error")
     }
+    
+};
+
+//admin/articles/id/edit:edit
+exports.editArticlePage = async (req, res) => {
+    try {
+
+    const userId = req.session.user.id;
+    const id = req.params.id;
+    const article = await articleModel.getArticleById(id);
+
+        if (!article) {
+
+            return res.status(404).send("Article not found");
+
+    }
+
+    res.render("admin/articles/edit", {
+        layout: "layouts/admin-layout",
+        pageTitle: "แก้ไขบทความ",
+        currentPage: "articles",
+        article,
+        userId
+    });
+    } catch (error) {
+        console.error(error);
+        res.send("Edit Article error")
+    }
+    
+};
+
+//admin/articles/id/edit:update
+exports.updateArticle = async (req, res) => {
+
+    const userId = req.session.user.id;
+    const id = req.params.id;
+    let featuredImage = req.body.old_featured_image;
+
+        if (req.file) {
+            featuredImage = req.file.filename;
+            ogImage = featuredImage;
+        }
+    
+
+
+
+    await articleModel.updateArticle(id, {
+
+        title: req.body.title,
+        slug: req.body.slug,
+        short_description: req.body.short_description,
+        content: req.body.content,
+        featured_image: featuredImage,
+        meta_title: req.body.meta_title,
+        meta_description: req.body.meta_description,
+        og_title: req.body.og_title,
+
+        og_image: ogImage,
+
+
+        canonical_url: req.body.canonical_url,
+        keywords: req.body.keywords,
+        is_featured: req.body.is_featured,
+        status: req.body.status,
+        userId
+
+    });
+
+        if (req.file && req.body.old_featured_image) {
+
+        const oldImage = path.join(
+            __dirname,
+            "../public/images/articles",
+            req.body.old_featured_image
+        );
+
+        if (fs.existsSync(oldImage)) {
+            fs.unlinkSync(oldImage);
+        }
+
+    }
+
+    res.redirect("/admin/articles");
+    
     
 };

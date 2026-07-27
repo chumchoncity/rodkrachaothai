@@ -40,7 +40,7 @@ exports.articlesList = async (req, res) => {
     }
     
 };
-exports.showCreateArticle = async (req, res) => {
+exports.createArticlePage = async (req, res) => {
     try {
  
     const userId = req.session.user.id;
@@ -57,6 +57,65 @@ exports.showCreateArticle = async (req, res) => {
     }
     
 };
+
+exports.createArticle = async (req, res) => {
+
+    const userId = req.session.user.id;
+    const status = req.body.status;
+    const publishedAt = status === "published"
+    ? new Date()
+    : null;
+
+        if (req.file) {
+            featuredImage = req.file ? req.file.filename : null;
+            ogImage = featuredImage;
+        }
+    
+
+
+
+        const data = {
+            title: req.body.title,
+            slug: req.body.slug,
+            short_description: req.body.short_description,
+            content: req.body.content,
+            featured_image: featuredImage,
+            meta_title: req.body.meta_title,
+            meta_description: req.body.meta_description,
+            og_title: req.body.og_title,
+            og_description: req.body.og_description,
+            og_image: ogImage,
+            canonical_url: req.body.canonical_url,
+            keywords: req.body.keywords,
+            is_featured: req.body.is_featured,
+            status: req.body.status,
+            published_at: publishedAt,
+            userId
+    };
+
+    console.log(data);
+
+    await articleModel.createArticle(data);
+
+        if (req.file && req.body.old_featured_image) {
+
+        const oldImage = path.join(
+            __dirname,
+            "../public/images/articles",
+            req.body.old_featured_image
+        );
+
+        if (fs.existsSync(oldImage)) {
+            fs.unlinkSync(oldImage);
+        }
+
+    }
+
+    res.redirect("/admin/articles");
+    
+    
+};
+
 
 //admin/articles/id/edit:edit
 exports.editArticlePage = async (req, res) => {
@@ -140,4 +199,23 @@ exports.updateArticle = async (req, res) => {
     res.redirect("/admin/articles");
     
     
+};
+
+//admin/delete-articles
+exports.deleteArticle = async (req, res) => {
+
+    try {
+        console.log(req.params.id);
+
+        await articleModel.deleteArticle(req.params.id);
+
+        res.redirect("/admin/articles");
+
+    } catch (err) {
+
+        console.error(err);
+        res.status(500).send("Delete Error");
+
+    }
+
 };

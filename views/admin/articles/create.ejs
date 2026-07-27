@@ -1,1 +1,245 @@
-<h1 class="text-2xl">สร้างบทความ</h1>
+<div class="max-w-5xl mx-auto p-8">
+
+<h1 class="text-3xl font-bold mb-8">
+เพิ่มบทความ
+</h1>
+
+<form
+action="/admin/articles/create"
+method="POST"
+enctype="multipart/form-data"
+class="space-y-6"
+>
+
+<!-- Title -->
+
+<div>
+
+<label class="font-semibold">
+หัวข้อบทความ
+</label>
+
+<input
+type="text"
+name="title"
+class="w-full border rounded-lg p-3"
+required>
+
+</div>
+
+<!-- Slug -->
+
+<div>
+
+<label class="font-semibold">
+Slug
+</label>
+
+<input
+type="text"
+name="slug"
+class="w-full border rounded-lg p-3">
+
+</div>
+
+<!-- Excerpt -->
+
+<div>
+
+<label class="font-semibold">
+คำอธิบายสั้น
+</label>
+
+<textarea
+name="short_description"
+rows="3"
+class="w-full border rounded-lg p-3"
+></textarea>
+
+</div>
+
+<!-- Content -->
+
+<div>
+
+<label class="font-semibold">
+เนื้อหา
+</label>
+
+<textarea
+name="content"
+rows="15"
+class="w-full border rounded-lg p-3"
+></textarea>
+
+</div>
+
+<!-- Featured -->
+
+<div>
+
+<label class="font-semibold">
+รูปหน้าปก
+</label>
+
+<input
+type="file"
+name="featured_image"
+accept="image/*">
+
+</div>
+
+<hr>
+
+<h2 class="text-2xl font-bold">
+SEO
+</h2>
+
+<!-- Meta Title -->
+
+<div>
+
+<label>
+Meta Title
+</label>
+
+<input
+type="text"
+name="meta_title"
+class="w-full border rounded-lg p-3">
+
+</div>
+
+<!-- Meta Description -->
+
+<div>
+
+<label>
+Meta Description
+</label>
+
+<textarea
+name="meta_description"
+rows="3"
+class="w-full border rounded-lg p-3"
+></textarea>
+
+</div>
+
+<!-- OG Title -->
+
+<div>
+
+<label>
+OG Title
+</label>
+
+<input
+type="text"
+name="og_title"
+class="w-full border rounded-lg p-3">
+
+</div>
+
+<!-- OG Description -->
+
+<div>
+
+<label>
+OG Description
+</label>
+
+<textarea
+name="og_description"
+rows="3"
+class="w-full border rounded-lg p-3"
+></textarea>
+
+</div>
+
+<div>
+
+<label>
+Canonical Url
+</label>
+
+<input
+type="text"
+name="canonical_url"
+class="w-full border rounded-lg p-3">
+
+</div>
+
+<!-- Keywords -->
+
+<div>
+
+<label>
+Keywords
+</label>
+
+<input
+type="text"
+name="keywords"
+class="w-full border rounded-lg p-3">
+
+</div>
+
+<!-- Status -->
+
+<div>
+
+<label>
+บทความแนะนำ
+</label>
+
+<select
+name="is_featured"
+class="w-full border rounded-lg p-3">
+
+<option value="0">
+    ไม่แนะนำ
+</option>
+
+<option value="1">
+    แนะนำ
+</option>
+
+</select>
+
+</div>
+
+<!-- Status -->
+
+<div>
+
+<label>
+สถานะ
+</label>
+
+<select
+name="status"
+class="w-full border rounded-lg p-3">
+
+<option value="draft">
+Draft
+</option>
+
+<option value="published">
+Published
+</option>
+
+</select>
+
+</div>
+
+<button
+class="bg-orange-500 text-white px-8 py-3 rounded-lg">
+
+บันทึกบทความ
+
+</button>
+
+</form>
+
+</div>

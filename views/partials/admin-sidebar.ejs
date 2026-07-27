@@ -1,11 +1,13 @@
-<div id="sidebar" class="w-64 bg-slate-300 text-gray-600
+<div
+id="sidebar"
+class="w-64 bg-slate-300 text-gray-600
 h-screen overflow-y-auto
 p-6 font-[kanit]
 fixed left-0 top-0
-transform -translate-x-full
-md:translate-x-0 md:static md:translate-x-0
+md:translate-x-0 md:static
 transition-transform duration-300
-z-40">
+z-40
+-translate-x-full">
 
   <div class="flex justify-end">
     <button id="closeBtn" class="mb-4 text-xl md:hidden">✕</button>
@@ -23,10 +25,10 @@ z-40">
        <%= currentPage === 'articles' ? 'bg-slate-200' : 'hover:bg-slate-200' %>">
        บทความ
     </a>
-    <a href="/admin/create-article"
+    <a href="/admin/articles/create"
        class="block px-4 py-2 rounded 
        <%= currentPage === 'create-article' ? 'bg-slate-200' : 'hover:bg-slate-200' %>">
-       สร้างบทความ
+       เพิ่มบทความ
     </a>
 
     <a href="/auth/logout"
@@ -36,7 +38,128 @@ z-40">
 
   </nav>
 </div>
+
 <script>
+
+const sidebar = document.getElementById("sidebar");
+const openBtn = document.getElementById("openBtn");
+const closeBtn = document.getElementById("closeBtn");
+
+let startX = 0;
+let currentX = 0;
+let dragging = false;
+let sidebarOpen = false;
+
+function openSidebar() {
+
+    sidebarOpen = true;
+
+    sidebar.classList.remove("-translate-x-full");
+    sidebar.style.transform = "translateX(0)";
+    sidebar.style.transition = "transform .3s ease";
+
+}
+
+function closeSidebar() {
+
+    sidebarOpen = false;
+
+    sidebar.classList.add("-translate-x-full");
+    sidebar.style.transform = "translateX(-100%)";
+    sidebar.style.transition = "transform .3s ease";
+
+}
+
+// ---------------------
+// ปุ่มเปิด / ปิด
+// ---------------------
+
+openBtn?.addEventListener("click", openSidebar);
+closeBtn?.addEventListener("click", closeSidebar);
+
+// ---------------------
+// Swipe
+// ---------------------
+
+document.addEventListener("touchstart", (e) => {
+
+    // ถ้า sidebar ปิด ต้องเริ่มปัดจากขอบซ้ายไม่เกิน 30px
+    if (!sidebarOpen && e.touches[0].clientX > 30) return;
+
+    dragging = true;
+
+    startX = e.touches[0].clientX;
+    currentX = startX;
+
+    sidebar.style.transition = "none";
+
+});
+
+document.addEventListener("touchmove", (e) => {
+
+    if (!dragging) return;
+
+    currentX = e.touches[0].clientX;
+
+    let diff = currentX - startX;
+
+    if (!sidebarOpen) {
+
+        // เปิด
+        diff = Math.min(0, -256 + diff);
+
+    } else {
+
+        // ปิด
+        diff = Math.min(0, diff);
+
+    }
+
+    sidebar.style.transform = `translateX(${diff}px)`;
+
+});
+
+document.addEventListener("touchend", () => {
+
+    if (!dragging) return;
+
+    dragging = false;
+
+    sidebar.style.transition = "transform .3s ease";
+
+    const diff = currentX - startX;
+
+    if (!sidebarOpen) {
+
+        if (diff > 100) {
+
+            openSidebar();
+
+        } else {
+
+            closeSidebar();
+
+        }
+
+    } else {
+
+        if (diff < -100) {
+
+            closeSidebar();
+
+        } else {
+
+            openSidebar();
+
+        }
+
+    }
+
+});
+
+</script>
+
+<!-- <script>
 
   const sidebar = document.getElementById("sidebar");
   const openBtn = document.getElementById("openBtn");
@@ -103,4 +226,4 @@ z-40">
 
   }
 
-</script>
+</script> -->

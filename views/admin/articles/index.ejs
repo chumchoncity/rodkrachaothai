@@ -8,7 +8,7 @@
 
         <a
             href="/admin/articles/create"
-            class="bg-blue-600 text-white px-4 py-2 rounded-lg">
+            class="bg-blue-600 text-white px-4 py-2 rounded">
 
             + เพิ่มบทความ
 
@@ -139,12 +139,15 @@
 
                             </a>
 
-                            <button
-                                class="px-3 py-1 rounded bg-red-600 text-white">
+                            <form action="/admin/articles/delete/<%= article.id %>" method="POST"
+                                onsubmit="return confirm('ยืนยันการลบบทความ?')">
 
-                                ลบ
+                                <button
+                                    class="bg-red-600 text-white px-3 py-1 rounded">
+                                    ลบ
+                                </button>
 
-                            </button>
+                            </form>
 
                         </div>
 

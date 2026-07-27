@@ -1,13 +1,13 @@
-<div
-id="sidebar"
+<div id="sidebar"
 class="w-64 bg-slate-300 text-gray-600
 h-screen overflow-y-auto
 p-6 font-[kanit]
 fixed left-0 top-0
+transform
 md:translate-x-0 md:static
 transition-transform duration-300
-z-40
--translate-x-full">
+z-40"
+style="transform: translateX(-236px);">
 
   <div class="flex justify-end">
     <button id="closeBtn" class="mb-4 text-xl md:hidden">✕</button>
@@ -54,7 +54,7 @@ function openSidebar() {
 
     sidebarOpen = true;
 
-    sidebar.classList.remove("-translate-x-full");
+    // sidebar.classList.remove("-translate-x-full");
     sidebar.style.transform = "translateX(0)";
     sidebar.style.transition = "transform .3s ease";
 
@@ -64,7 +64,7 @@ function closeSidebar() {
 
     sidebarOpen = false;
 
-    sidebar.classList.add("-translate-x-full");
+    sidebar.style.transform = "translateX(-236px)";
     sidebar.style.transform = "translateX(-100%)";
     sidebar.style.transition = "transform .3s ease";
 

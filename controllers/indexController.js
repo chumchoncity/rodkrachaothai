@@ -5,11 +5,13 @@ const machineModel = require("../models/machineModel");
 exports.index = async (req, res) => {
     try {  
         const machineRandom = await indexModel.machineRandom();
+        const latestArticles = await indexModel.latestArticles();
         
     
         res.render("home/index", {
             currentPage: "index",
             machineRandom,
+            latestArticles,
             meta: {
 
                 title:

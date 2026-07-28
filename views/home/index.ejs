@@ -437,23 +437,48 @@
     <section class="w-full py-4 bg-white">
         <div class="max-w-7xl mx-auto p-4 font-[kanit] text-blue-900">
             <h2 class="text-blue-900 text-2xl font-semibold py-4">บทความล่าสุด</h2>
-            <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="flex gap-4 p-6 border-2 border-slate-300 rounded h-64 bg-white">
-                    
-                    
+            <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-10">
+
+                <% latestArticles.forEach(article => { %>
+                <div class="h-96 grid grid-rows-5 gap-1 rounded border-2 border-slate-300 shadow">
+                    <div class="bg-white row-span-3">
+                        <img src="/images/articles/<%= article.featured_image %>" alt="<%= article.og_title %>" class="w-full h-full object-cover">
+                    </div>
+                    <div class="row-span-2 p-2 grid grid-rows-3">
+                        <div class="row-span-2">
+                            <h1 class="text-lg text-blue-900 font-semibold"><%= article.title %></h1>
+                            <p class="text-blue-900">
+                                <%= article.short_description %>
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-5 items-end">
+                            <div class="col-span-2 flex gap-1 text-sm font-light items-center">
+                                <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-week"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M7 14h.013" /><path d="M10.01 14h.005" /><path d="M13.01 14h.005" /><path d="M16.015 14h.005" /><path d="M13.015 17h.005" /><path d="M7.01 17h.005" /><path d="M10.01 17h.005" /></svg></span>
+                                <p>
+                                    <%= new Date(article.created_at).toLocaleDateString('th-TH', {
+                                        day: 'numeric',
+                                        month: 'short',
+                                        year: '2-digit'
+                                    }) %>
+                                </p>
+                            </div>
+                            <div class="col-span-1 text-sm font-light flex gap-1 items-center">
+                                <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg></span>
+                                <p>
+                                    <%= article.view_count %>
+                                </p>
+                            </div>
+                            <div class="col-span-2 flex justify-end text-sm">
+                                <a href="/articles/<%= article.slug %>" class="flex text-orange-500 hover:text-orange-600">
+                                    อ่านต่อ
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M15 16l4 -4" /><path d="M15 8l4 4" /></svg>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-                <div class="flex gap-4 p-6 border-2 border-slate-300 rounded h-64 bg-white">
-                    
-                    
-                </div>
-                <div class="flex gap-4 p-6 border-2 border-slate-300 rounded h-64 bg-white">
-                    
-                    
-                </div>
-                <div class="flex gap-4 p-6 border-2 border-slate-300 rounded h-64 bg-white">
-                    
-                    
-                </div>
+                <% }) %>
             </div>
         </div>
     </section>

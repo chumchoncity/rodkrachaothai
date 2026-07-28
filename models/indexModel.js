@@ -19,3 +19,18 @@ exports.machineRandom = async () => {
     `);
     return rows;
 };
+
+exports.latestArticles = async () => {
+
+    const [rows] = await db.query(`
+        SELECT *
+        FROM articles
+        WHERE status='published'
+        AND is_deleted = 0
+        ORDER BY created_at DESC
+        LIMIT 5
+    `);
+
+    return rows;
+
+}

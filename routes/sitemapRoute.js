@@ -9,6 +9,7 @@ router.get('/sitemap.xml', async (req, res) => {
     try {
 
         const machines = await sitemapModel.getAllMachinesSitemap();
+        const articles = await sitemapModel.getAllArticlesSitemap();
 
         res.set('Content-Type', 'text/xml');
 
@@ -45,7 +46,7 @@ router.get('/sitemap.xml', async (req, res) => {
 '<priority>0.9</priority>' +
 '</url>';
 
-        // หน้างาน
+        // machines
         if (machines && machines.length > 0) {
 
             machines.forEach(machine => {
@@ -60,10 +61,17 @@ router.get('/sitemap.xml', async (req, res) => {
             });
 
         }
-        // หน้าผู้ประกาศ
-        if (machines && machines.length > 0) {
+        // articles
+        if (articles && articles.length > 0) {
 
-            machines.forEach(machine => {
+            articles.forEach(article => {
+
+                xml +=
+'<url>' +
+`<loc>https://www.rodkrachaothai.com/articles/${article.slug}</loc>` +
+'<changefreq>daily</changefreq>' +
+'<priority>0.8</priority>' +
+'</url>';
 
 
             });

@@ -10,15 +10,17 @@ exports.getAllMachinesSitemap = async () => {
 
     return rows;
 };
-
-//sitemap employer
-exports.getAllEmployerSitemap = async () => {
+//sitemap articles
+exports.getAllArticlesSitemap = async () => {
 
     const [rows] = await db.query(`
-        SELECT id
-        FROM companies
-        WHERE status = 'active'
+        SELECT slug
+        FROM articles
+        WHERE status = 'published'
+        AND is_deleted = 0
+        ORDER BY created_at DESC
     `);
 
     return rows;
 };
+

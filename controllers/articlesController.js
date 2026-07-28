@@ -39,6 +39,16 @@ exports.articleDetail = async (req, res) => {
 
         const article = await articleModel.articleDetail(slug);
 
+        if (!req.session.viewedArticles) {
+            req.session.viewedArticles = [];
+        }
+
+        if (!req.session.viewedArticles.includes(article.id)) {
+            await articleModel.incrementView(article.id);
+            req.session.viewedArticles.push(article.id);
+            article.views++;
+        }
+
         const articles = await articleModel.latestArticles();
         
         

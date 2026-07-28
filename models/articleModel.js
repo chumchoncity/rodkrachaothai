@@ -182,3 +182,14 @@ exports.deleteArticle = async (id) => {
     await db.query(sql, [id]);
 
 };
+
+//view count
+exports.incrementView = async (id) => {
+    const sql = `
+        UPDATE articles
+        SET view_count = view_count + 1
+        WHERE id = ?
+    `;
+
+    await db.query(sql, [id]);
+};

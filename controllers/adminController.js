@@ -4,16 +4,26 @@ const fs = require("fs");
 const path = require("path");
 
 
+
+//admin/dashboard
+
+
 exports.adminDashboard = async (req, res) => {
     try {
  
     const userId = req.session.user.id;
+    const totalArticles = await adminModel.getTotalArticles();
+    const publishedArticles = await adminModel.getPublishedArticles();
+    const totalViews = await adminModel.getTotalViewArticles();
 
     res.render("admin/index", {
         layout: "layouts/admin-layout",
         pageTitle: "Admin Dashboard",
         currentPage: "dashboard",
-        userId: userId
+        userId: userId,
+        totalArticles,
+        publishedArticles,
+        totalViews
     });
     } catch (error) {
         console.error(error);
@@ -201,7 +211,7 @@ exports.updateArticle = async (req, res) => {
     
 };
 
-//admin/delete-articles
+//admin/articles/delete
 exports.deleteArticle = async (req, res) => {
 
     try {

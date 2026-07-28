@@ -1,245 +1,266 @@
 <div class="max-w-5xl mx-auto p-8">
 
-<h1 class="text-3xl font-bold mb-8">
-เพิ่มบทความ
-</h1>
+    <h1 class="text-3xl font-bold mb-8 text-slate-100">
+    เพิ่มบทความ
+    </h1>
 
-<form
-action="/admin/articles/create"
-method="POST"
-enctype="multipart/form-data"
-class="space-y-6"
->
+    <form
+    action="/admin/articles/create"
+    method="POST"
+    enctype="multipart/form-data"
+    class="space-y-6 text-slate-400"
+    >
 
-<!-- Title -->
+        <!-- Title -->
 
-<div>
+        <div>
 
-<label class="font-semibold">
-หัวข้อบทความ
-</label>
+            <label class="font-semibold">
+            หัวข้อบทความ
+            </label>
 
-<input
-type="text"
-name="title"
-class="w-full border rounded-lg p-3"
-required>
+            <input
+            type="text"
+            name="title"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 bg-slate-900 border-slate-700 text-slate-100"
+            required>
 
-</div>
+        </div>
 
-<!-- Slug -->
+        <!-- Slug -->
 
-<div>
+        <div>
 
-<label class="font-semibold">
-Slug
-</label>
+            <label class="font-semibold">
+            Slug
+            </label>
 
-<input
-type="text"
-name="slug"
-class="w-full border rounded-lg p-3">
+            <input
+            type="text"
+            name="slug"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 bg-slate-900 border-slate-700 text-slate-100">
 
-</div>
+        </div>
 
-<!-- Excerpt -->
+        <!-- Excerpt -->
 
-<div>
+        <div>
 
-<label class="font-semibold">
-คำอธิบายสั้น
-</label>
+            <label class="font-semibold">
+            คำอธิบายสั้น
+            </label>
 
-<textarea
-name="short_description"
-rows="3"
-class="w-full border rounded-lg p-3"
-></textarea>
+            <textarea
+            name="short_description"
+            rows="3"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 bg-slate-900 border-slate-700 text-slate-100"
+            ></textarea>
 
-</div>
+        </div>
 
-<!-- Content -->
+        <!-- Content -->
 
-<div>
+        <div>
 
-<label class="font-semibold">
-เนื้อหา
-</label>
+            <label class="font-semibold">
+            เนื้อหา
+            </label>
 
-<textarea
-name="content"
-rows="15"
-class="w-full border rounded-lg p-3"
-></textarea>
+            <textarea
+            name="content"
+            rows="15"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 bg-slate-900 border-slate-700 text-slate-100"
+            ></textarea>
 
-</div>
+        </div>
 
-<!-- Featured -->
+        <!-- Featured -->
 
-<div>
+        <div>
+            <label class="block font-semibold mb-2">
+                รูปหน้าปก
+            </label>
 
-<label class="font-semibold">
-รูปหน้าปก
-</label>
+            <label
+                for="featured_image"
+                class="inline-flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded cursor-pointer transition">
+                เลือกรูปหน้าปก
+            </label>
 
-<input
-type="file"
-name="featured_image"
-accept="image/*">
+            <span id="file-name" class="ml-3 text-slate-400 text-sm">
+                ยังไม่ได้เลือกไฟล์
+            </span>
 
-</div>
+            <input
+                id="featured_image"
+                type="file"
+                name="featured_image"
+                accept="image/*"
+                class="hidden">
+        </div>
 
-<hr>
+        <script>
+            const featuredImage = document.getElementById('featured_image');
+            const fileName = document.getElementById('file-name');
 
-<h2 class="text-2xl font-bold">
-SEO
-</h2>
+            featuredImage.addEventListener('change', function () {
+                fileName.textContent = this.files.length
+                    ? this.files[0].name
+                    : 'ยังไม่ได้เลือกไฟล์';
+            });
+        </script>
 
-<!-- Meta Title -->
+        <hr>
 
-<div>
+        <h2 class="text-2xl font-bold text-slate-100">
+        SEO
+        </h2>
 
-<label>
-Meta Title
-</label>
+        <!-- Meta Title -->
 
-<input
-type="text"
-name="meta_title"
-class="w-full border rounded-lg p-3">
+        <div>
 
-</div>
+            <label>
+            Meta Title
+            </label>
 
-<!-- Meta Description -->
+            <input
+            type="text"
+            name="meta_title"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 bg-slate-900 border-slate-700 text-slate-100">
 
-<div>
+        </div>
 
-<label>
-Meta Description
-</label>
+        <!-- Meta Description -->
 
-<textarea
-name="meta_description"
-rows="3"
-class="w-full border rounded-lg p-3"
-></textarea>
+        <div>
 
-</div>
+            <label>
+            Meta Description
+            </label>
 
-<!-- OG Title -->
+            <textarea
+            name="meta_description"
+            rows="3"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100"
+            ></textarea>
 
-<div>
+        </div>
 
-<label>
-OG Title
-</label>
+        <!-- OG Title -->
 
-<input
-type="text"
-name="og_title"
-class="w-full border rounded-lg p-3">
+        <div>
 
-</div>
+            <label>
+            OG Title
+            </label>
 
-<!-- OG Description -->
+            <input
+            type="text"
+            name="og_title"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100">
 
-<div>
+        </div>
 
-<label>
-OG Description
-</label>
+        <!-- OG Description -->
 
-<textarea
-name="og_description"
-rows="3"
-class="w-full border rounded-lg p-3"
-></textarea>
+        <div>
 
-</div>
+            <label>
+            OG Description
+            </label>
 
-<div>
+            <textarea
+            name="og_description"
+            rows="3"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100"
+            ></textarea>
 
-<label>
-Canonical Url
-</label>
+        </div>
 
-<input
-type="text"
-name="canonical_url"
-class="w-full border rounded-lg p-3">
+        <div>
 
-</div>
+            <label>
+            Canonical Url
+            </label>
 
-<!-- Keywords -->
+            <input
+            type="text"
+            name="canonical_url"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100">
 
-<div>
+        </div>
 
-<label>
-Keywords
-</label>
+        <!-- Keywords -->
 
-<input
-type="text"
-name="keywords"
-class="w-full border rounded-lg p-3">
+        <div>
 
-</div>
+            <label>
+            Keywords
+            </label>
 
-<!-- Status -->
+            <input
+            type="text"
+            name="keywords"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100">
 
-<div>
+        </div>
 
-<label>
-บทความแนะนำ
-</label>
+        <!-- Status -->
 
-<select
-name="is_featured"
-class="w-full border rounded-lg p-3">
+        <div>
 
-<option value="0">
-    ไม่แนะนำ
-</option>
+            <label>
+            บทความแนะนำ
+            </label>
 
-<option value="1">
-    แนะนำ
-</option>
+            <select
+            name="is_featured"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100">
 
-</select>
+            <option value="0">
+                ไม่แนะนำ
+            </option>
 
-</div>
+            <option value="1">
+                แนะนำ
+            </option>
 
-<!-- Status -->
+            </select>
 
-<div>
+        </div>
 
-<label>
-สถานะ
-</label>
+        <!-- Status -->
 
-<select
-name="status"
-class="w-full border rounded-lg p-3">
+        <div>
 
-<option value="draft">
-Draft
-</option>
+            <label>
+            สถานะ
+            </label>
 
-<option value="published">
-Published
-</option>
+            <select
+            name="status"
+            class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100">
 
-</select>
+            <option value="draft">
+            Draft
+            </option>
 
-</div>
+            <option value="published">
+            Published
+            </option>
 
-<button
-class="bg-orange-500 text-white px-8 py-3 rounded-lg">
+            </select>
 
-บันทึกบทความ
+        </div>
 
-</button>
+        <button
+        class="bg-orange-600 text-slate-100 px-8 py-3 rounded hover:bg-orange-700">
 
-</form>
+        บันทึกบทความ
+
+        </button>
+
+    </form>
 
 </div>

@@ -1,8 +1,8 @@
-<div class="max-w-7xl mx-auto p-6">
+<div class="max-w-7xl mx-auto pr-2 pl-6 lg:p-4 font-[kanit]">
 
     <div class="flex justify-between items-center mb-6">
 
-        <h1 class="text-2xl font-bold">
+        <h1 class="text-4xl font-semibold text-slate-100 mt-6 ml-4 md:ml-0">
             บทความทั้งหมด
         </h1>
 
@@ -16,35 +16,35 @@
 
     </div>
 
-    <div class="bg-white rounded shadow overflow-hidden">
+    <div class="bg-slate-800 rounded shadow overflow-hidden text-slate-400">
 
         <table class="w-full">
 
-            <thead class="bg-gray-50">
+            <thead class="">
 
                 <tr>
 
-                    <th class="p-4 text-left">
+                    <th class="p-2 text-center text-sm md:text-md">
                         รูป
                     </th>
 
-                    <th class="p-4 text-left">
+                    <th class="p-2 text-center text-sm md:text-md">
                         หัวข้อ
                     </th>
 
-                    <th class="p-4">
-                        Views
+                    <th class="p-2 text-sm md:text-md">
+                        วิว
                     </th>
 
-                    <th class="p-4">
+                    <th class="p-2 text-sm md:text-md">
                         สถานะ
                     </th>
 
-                    <th class="p-4">
-                        วันที่เผยแพร่
+                    <th class="p-2 text-sm md:text-md">
+                        เผยแพร่
                     </th>
 
-                    <th class="p-4">
+                    <th class="p-2 text-sm md:text-md">
                         จัดการ
                     </th>
 
@@ -58,21 +58,21 @@
 
                 <tr class="border-t">
 
-                    <td class="p-4">
+                    <td class="pl-4 lg:p-2">
 
                         <img
                             src="/images/articles/<%= article.featured_image %>"
-                            class="w-28 h-16 object-cover rounded">
+                            class="w-28 h-16 object-cover rounded min-w-[100px]">
 
                     </td>
 
-                    <td class="p-4">
+                    <td class="p-2">
 
-                        <div class="font-semibold">
+                        <div class="text-sm md:text-md md:font-semibold">
                             <%= article.title %>
                         </div>
 
-                        <div class="text-sm text-gray-500">
+                        <div class="text-sm text-gray-500 text-[11px] md:text-sm">
 
                             /articles/<%= article.slug %>
 
@@ -90,7 +90,7 @@
 
                         <% if(article.status=="published"){ %>
 
-                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+                            <span class="bg-green-200 text-green-600 px-3 py-1 rounded-full text-[11px]">
 
                                 Published
 
@@ -98,7 +98,7 @@
 
                         <% }else{ %>
 
-                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
+                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-[11px]">
 
                                 Draft
 
@@ -108,7 +108,7 @@
 
                     </td>
 
-                    <td class="text-center">
+                    <td class="text-center text-sm">
 
                         <%=
                         article.published_at
@@ -120,12 +120,12 @@
 
                     <td>
 
-                        <div class="flex justify-center gap-2">
+                        <div class="flex justify-center flex-col lg:flex-row gap-2 p-2">
 
                             <a
                                 href="/articles/<%= article.slug %>"
                                 target="_blank"
-                                class="px-3 py-1 rounded bg-slate-200">
+                                class="text-slate-600 px-3 py-1 rounded bg-slate-200 w-full text-center hover:bg-slate-300 transition">
 
                                 ดู
 
@@ -133,7 +133,7 @@
 
                             <a
                                 href="/admin/articles/edit/<%= article.id %>"
-                                class="px-3 py-1 rounded bg-blue-600 text-white">
+                                class="px-3 py-1 rounded bg-blue-600 text-white w-full text-center hover:bg-blue-700 transition">
 
                                 แก้ไข
 
@@ -143,7 +143,7 @@
                                 onsubmit="return confirm('ยืนยันการลบบทความ?')">
 
                                 <button
-                                    class="bg-red-600 text-white px-3 py-1 rounded">
+                                    class="bg-red-600 text-white px-3 py-1 rounded w-full text-center hover:bg-red-700 transition">
                                     ลบ
                                 </button>
 

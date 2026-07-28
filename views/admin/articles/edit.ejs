@@ -1,6 +1,6 @@
 <div class="max-w-5xl mx-auto p-6">
 
-    <h1 class="text-3xl font-bold mb-8">
+    <h1 class="text-3xl font-bold mb-8 text-slate-100">
         แก้ไขบทความ
     </h1>
 
@@ -8,7 +8,7 @@
         action="/admin/articles/edit/<%= article.id %>"
         method="POST"
         enctype="multipart/form-data"
-        class="space-y-6"
+        class="space-y-6 text-slate-400"
     >
 
         <div>
@@ -21,7 +21,7 @@
                 type="text"
                 name="title"
                 value="<%= article.title %>"
-                class="w-full border rounded p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             >
 
         </div>
@@ -35,7 +35,7 @@
                 type="text"
                 name="slug"
                 value="<%= article.slug %>"
-                class="w-full border rounded p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             >
 
         </div>
@@ -49,7 +49,7 @@
             <textarea
                 name="short_description"
                 rows="4"
-                class="w-full border rounded-lg p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             ><%= article.short_description %></textarea>
 
         </div>
@@ -63,33 +63,41 @@
             <textarea
                 name="content"
                 rows="15"
-                class="w-full border rounded-lg p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             ><%= article.content %></textarea>
 
         </div>
 
         <div>
-            <label class="block font-medium">รูปปก</label>
+            <label class="block font-medium mb-2">รูปปก</label>
 
             <% if (article.featured_image) { %>
                 <img
                     src="/images/articles/<%= article.featured_image %>"
-                    class="w-48 rounded mb-3"
-                >
+                    class="w-48 rounded mb-3">
             <% } %>
 
+            <label
+                for="featured_image"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded cursor-pointer">
+                เลือกรูปภาพ
+            </label>
+
+            <span id="file-name" class="ml-3 text-slate-400">
+                ยังไม่ได้เลือกไฟล์
+            </span>
+
             <input
+                id="featured_image"
                 type="file"
                 name="featured_image"
                 accept="image/*"
-                class="w-full border rounded-lg p-3"
-            >
+                class="hidden">
 
             <input
                 type="hidden"
                 name="old_featured_image"
-                value="<%= article.featured_image %>"
-            >
+                value="<%= article.featured_image %>">
         </div>
         <div>
 
@@ -101,7 +109,7 @@
                 type="text"
                 name="meta_title"
                 value="<%= article.meta_title %>"
-                class="w-full border rounded-lg p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             >
 
         </div>
@@ -115,7 +123,7 @@
             <textarea
                 name="meta_description"
                 rows="3"
-                class="w-full border rounded-lg p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             ><%= article.meta_description %></textarea>
 
         </div>
@@ -129,7 +137,7 @@
                 type="text"
                 name="og_title"
                 value="<%= article.og_title %>"
-                class="w-full border rounded-lg p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             >
 
         </div>
@@ -142,7 +150,7 @@
             <textarea
                 name="og_description"
                 rows="3"
-                class="w-full border rounded-lg p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             ><%= article.og_description %></textarea>
 
         </div>
@@ -156,7 +164,7 @@
                 type="text"
                 name="canonical_url"
                 value="<%= article.canonical_url %>"
-                class="w-full border rounded-lg p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             >
 
         </div>
@@ -170,7 +178,7 @@
                 type="text"
                 name="keywords"
                 value="<%= article.keywords %>"
-                class="w-full border rounded-lg p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             >
 
         </div>
@@ -181,7 +189,7 @@
 
             <select
                 name="is_featured"
-                class="w-full border rounded-lg p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             >
                 <option value="0" <%= article.is_featured == 0 ? 'selected' : '' %>>
                     ไม่แนะนำ
@@ -199,7 +207,7 @@
 
             <select
                 name="status"
-                class="w-full border rounded-lg p-3 mt-2"
+                class="w-full border rounded p-2 bg-slate-900 border-slate-700 text-slate-100 mt-2"
             >
                 <option value="draft" <%= article.status === 'draft' ? 'selected' : '' %>>
                     Draft
@@ -212,7 +220,7 @@
         </div>
 
         <button
-            class="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600"
+            class="bg-orange-600 text-slate-100 px-6 py-3 rounded hover:bg-orange-700"
         >
             บันทึกการแก้ไข
         </button>

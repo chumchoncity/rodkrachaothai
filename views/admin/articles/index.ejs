@@ -20,38 +20,6 @@
 
         <table class="w-full">
 
-            <thead class="">
-
-                <tr>
-
-                    <th class="p-2 text-center text-sm md:text-md">
-                        รูป
-                    </th>
-
-                    <th class="p-2 text-center text-sm md:text-md">
-                        หัวข้อ
-                    </th>
-
-                    <th class="p-2 text-sm md:text-md">
-                        วิว
-                    </th>
-
-                    <th class="p-2 text-sm md:text-md">
-                        สถานะ
-                    </th>
-
-                    <th class="p-2 text-sm md:text-md">
-                        เผยแพร่
-                    </th>
-
-                    <th class="p-2 text-sm md:text-md">
-                        จัดการ
-                    </th>
-
-                </tr>
-
-            </thead>
-
             <tbody>
 
             <% articles.forEach(article => { %>
@@ -62,13 +30,8 @@
 
                         <img
                             src="/images/articles/<%= article.featured_image %>"
-                            class="w-28 h-16 object-cover rounded min-w-[100px]">
-
-                    </td>
-
-                    <td class="p-2">
-
-                        <div class="text-sm md:text-md md:font-semibold">
+                            class="w-28 h-16 object-cover rounded">
+                        <div class="text-sm md:text-md md:font-semibold mt-2">
                             <%= article.title %>
                         </div>
 
@@ -80,7 +43,10 @@
 
                     </td>
 
-                    <td class="text-center">
+                    <td class="text-center items-center">
+                        <span class="flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye text-slate-400"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+                        </span>
 
                         <%= article.view_count.toLocaleString() %>
 
@@ -88,33 +54,33 @@
 
                     <td class="text-center">
 
-                        <% if(article.status=="published"){ %>
+                        <div class="flex flex-col gap-1">
+                            <% if(article.status=="published"){ %>
 
-                            <span class="bg-green-200 text-green-600 px-3 py-1 rounded-full text-[11px]">
+                            <span class="text-green-400 px-3 py-1 rounded-full text-sm">
 
                                 Published
 
                             </span>
 
-                        <% }else{ %>
+                            <% }else{ %>
 
-                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-[11px]">
+                                <span class="text-yellow-700 px-3 py-1 rounded-full text-sm">
 
-                                Draft
+                                    Draft
 
+                                </span>
+
+                            <% } %>
+                            
+                            <span class="text-sm">
+                                <%=
+                            article.published_at
+                            ? new Date(article.published_at).toLocaleDateString("th-TH")
+                            : "-"
+                            %>
                             </span>
-
-                        <% } %>
-
-                    </td>
-
-                    <td class="text-center text-sm">
-
-                        <%=
-                        article.published_at
-                        ? new Date(article.published_at).toLocaleDateString("th-TH")
-                        : "-"
-                        %>
+                        </div>
 
                     </td>
 
@@ -140,10 +106,12 @@
                             </a>
 
                             <form action="/admin/articles/delete/<%= article.id %>" method="POST"
-                                onsubmit="return confirm('ยืนยันการลบบทความ?')">
+                                onsubmit="return confirm('ยืนยันการลบบทความ?')"
+                                class="bg-red-600 text-white px-3 py-1 rounded w-full text-center hover:bg-red-700 transition"
+                                >
 
                                 <button
-                                    class="bg-red-600 text-white px-3 py-1 rounded w-full text-center hover:bg-red-700 transition">
+                                    class="">
                                     ลบ
                                 </button>
 

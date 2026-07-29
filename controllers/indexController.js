@@ -21,10 +21,10 @@ exports.index = async (req, res) => {
                     "บริการให้เช่าเครื่องจักรทำงานบนที่สูง มีบริการอบรมการใช้งานและให้คำปรึกษา",
 
                 image:
-                    "https://www.rodkrachaothai.com/images/default-og.png",
+                    "https://rodkrachaothai.com/images/default-og.png",
 
                 url:
-                    "https://www.rodkrachaothai.com"
+                    "https://rodkrachaothai.com"
                 }       
         });
         } catch (error) {

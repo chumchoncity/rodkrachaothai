@@ -16,10 +16,10 @@ exports.showLogin = (req, res) => {
               `เข้าสู่ระบบ admin รถกระเช้าไทย`,
 
             image:
-              "https://www.rodkrachaothai.com/images/default-og.png",
+              "https://rodkrachaothai.com/images/default-og.png",
 
             url:
-              `https://www.rodkrachaothai.com/auth/login`
+              `https://rodkrachaothai.com/auth/login`
           }
     });
 };

@@ -17,10 +17,10 @@ exports.contact = async (req, res) => {
                     "ติดต่อสอบถามรายละเอียด การเช่า การใช้งาน และพร้อมให้คำปรึกษา",
 
                 image:
-                    "https://www.rodkrachaothai.com/images/default-og.png",
+                    "https://rodkrachaothai.com/images/default-og.png",
 
                 url:
-                    "https://www.rodkrachaothai.com/contact"
+                    "https://rodkrachaothai.com/contact"
                 }       
         });
         } catch (error) {

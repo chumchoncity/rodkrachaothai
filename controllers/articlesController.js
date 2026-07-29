@@ -20,10 +20,10 @@ exports.articles = async (req, res) => {
                     "เรียนรู้และทำความเข้าใจให้มากขึ้นเกี่ยวกับ เครื่องจักร บูมลิฟท์ และเอ็กซ์ลิฟท์",
 
                 image:
-                    "https://www.rodkrachaothai.com/images/default-og.png",
+                    "https://rodkrachaothai.com/images/default-og.png",
 
                 url:
-                    "https://www.rodkrachaothai.com/articles"
+                    "https://rodkrachaothai.com/articles"
                 }       
         });
         } catch (error) {
@@ -64,10 +64,13 @@ exports.articleDetail = async (req, res) => {
                 description:article.meta_description,
 
                 image:
-                    `https://www.rodkrachaothai.com/images/articles/${article.featured_image}`,
+                    `https://rodkrachaothai.com/images/articles/${article.featured_image}`,
 
                 url:
-                    `https://www.rodkrachaothai.com/articles/${article.slug}`
+                    `https://rodkrachaothai.com/articles/${article.slug}`,
+
+                type: "article"
+
                 }       
         });
         } catch (error) {

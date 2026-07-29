@@ -30,10 +30,10 @@ exports.machineAll = async (req, res) => {
                     "ค้นหาเครื่องจักร ดูข้อมูลเครื่องจักร เอ็กซ์ลิฟท์ บูมลิฟท์",
 
                 image:
-                    "https://www.rodkrachaothai.com/images/default-og.png",
+                    "https://rodkrachaothai.com/images/default-og.png",
 
                 url:
-                    "https://www.rodkrachaothai.com/machines"
+                    "https://rodkrachaothai.com/machines"
                 }       
         });
         } catch (error) {
@@ -72,11 +72,11 @@ exports.machineDetail = async (req, res) => {
                 description,
 
                 image: machine.image
-                    ? `https://www.rodkrachaothai.com/uploads/machines/${machine.image_url}`
-                    : "https://www.rodkrachaothai.com/images/default-og.png",
+                    ? `https://rodkrachaothai.com/uploads/machines/${machine.image_url}`
+                    : "https://rodkrachaothai.com/images/default-og.png",
 
                 url:
-                    `https://www.rodkrachaothai.com/machines/${machine.slug}`
+                    `https://rodkrachaothai.com/machines/${machine.slug}`
                 }       
         });
         } catch (error) {

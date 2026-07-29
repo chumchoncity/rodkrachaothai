@@ -64,10 +64,10 @@ exports.articleDetail = async (req, res) => {
                 description:article.meta_description,
 
                 image:
-                    "https://www.rodkrachaothai.com/images/articles/article.featured_image",
+                    `https://www.rodkrachaothai.com/images/articles/${article.featured_image}`,
 
                 url:
-                    "https://www.rodkrachaothai.com/articles/article.slug"
+                    `https://www.rodkrachaothai.com/articles/${article.slug}`
                 }       
         });
         } catch (error) {

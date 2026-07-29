@@ -76,7 +76,7 @@ exports.machineDetail = async (req, res) => {
                     : "https://www.rodkrachaothai.com/images/default-og.png",
 
                 url:
-                    `https://www.rodkrachaothai.com/machines/${slug}`
+                    `https://www.rodkrachaothai.com/machines/${machine.slug}`
                 }       
         });
         } catch (error) {

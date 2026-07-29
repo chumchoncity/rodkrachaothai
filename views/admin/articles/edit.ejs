@@ -99,6 +99,17 @@
                 name="old_featured_image"
                 value="<%= article.featured_image %>">
         </div>
+
+        <script>
+        document.getElementById('featured_image').addEventListener('change', function() {
+            const fileName = this.files.length
+                ? this.files[0].name
+                : 'ยังไม่ได้เลือกไฟล์';
+
+            document.getElementById('file-name').textContent = fileName;
+        });
+        </script>
+        
         <div>
 
             <label>

@@ -59,17 +59,15 @@ exports.articleDetail = async (req, res) => {
             articles,
             meta: {
 
-                title:
-                    "บทความ และสาระความรู้ เกี่ยวกับรถกระเช้าบูมลิฟท์ เอ็กซ์ลิฟท์ | รถกระเช้าไทย",
+                title:article.meta_title || "บทความรถกระเช้าไทย",
 
-                description:
-                    "เรียนรู้และทำความเข้าใจให้มากขึ้นเกี่ยวกับ เครื่องจักร บูมลิฟท์ และเอ็กซ์ลิฟท์",
+                description:article.meta_description,
 
                 image:
-                    "https://www.rodkrachaothai.com/images/default-og.png",
+                    "https://www.rodkrachaothai.com/images/articles/article.featured_image",
 
                 url:
-                    "https://www.rodkrachaothai.com/articles"
+                    "https://www.rodkrachaothai.com/articles/article.slug"
                 }       
         });
         } catch (error) {

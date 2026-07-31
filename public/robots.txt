@@ -13,4 +13,4 @@ Disallow: /uploads/
 Disallow: /*?
 
 # sitemap
-Sitemap: https://www.rodkrachaothai.com/sitemap.xml
+Sitemap: https://rodkrachaothai.com/sitemap.xml

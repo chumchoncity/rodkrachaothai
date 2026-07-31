@@ -20,28 +20,28 @@ router.get('/sitemap.xml', async (req, res) => {
 // หน้าแรก
         xml +=
 '<url>' +
-'<loc>https://www.rodkrachaothai.com/</loc>' +
+'<loc>https://rodkrachaothai.com/</loc>' +
 '<changefreq>daily</changefreq>' +
 '<priority>1.0</priority>' +
 '</url>';
 //about
         xml +=
 '<url>' +
-'<loc>https://www.rodkrachaothai.com/about</loc>' +
+'<loc>https://rodkrachaothai.com/about</loc>' +
 '<changefreq>daily</changefreq>' +
 '<priority>0.9</priority>' +
 '</url>';
 //contact
         xml +=
 '<url>' +
-'<loc>https://www.rodkrachaothai.com/contact</loc>' +
+'<loc>https://rodkrachaothai.com/contact</loc>' +
 '<changefreq>daily</changefreq>' +
 '<priority>0.9</priority>' +
 '</url>';
 //machines
         xml +=
 '<url>' +
-'<loc>https://www.rodkrachaothai.com/machines</loc>' +
+'<loc>https://rodkrachaothai.com/machines</loc>' +
 '<changefreq>daily</changefreq>' +
 '<priority>0.9</priority>' +
 '</url>';
@@ -53,7 +53,7 @@ router.get('/sitemap.xml', async (req, res) => {
 
                 xml +=
 '<url>' +
-`<loc>https://www.rodkrachaothai.com/machines/${machine.slug}</loc>` +
+`<loc>https://rodkrachaothai.com/machines/${machine.slug}</loc>` +
 '<changefreq>daily</changefreq>' +
 '<priority>0.8</priority>' +
 '</url>';
@@ -68,7 +68,7 @@ router.get('/sitemap.xml', async (req, res) => {
 
                 xml +=
 '<url>' +
-`<loc>https://www.rodkrachaothai.com/articles/${article.slug}</loc>` +
+`<loc>https://rodkrachaothai.com/articles/${article.slug}</loc>` +
 '<changefreq>daily</changefreq>' +
 '<priority>0.8</priority>' +
 '</url>';

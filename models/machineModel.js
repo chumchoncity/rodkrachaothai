@@ -131,3 +131,14 @@ exports.getMachines = async (filters) => {
 
     return rows;
 };
+
+//view count
+exports.incrementView = async (id) => {
+    const sql = `
+        UPDATE machines
+        SET view_count = view_count + 1
+        WHERE id = ?
+    `;
+
+    await db.query(sql, [id]);
+};

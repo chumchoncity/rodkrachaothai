@@ -19,6 +19,7 @@
                     </ol>
                 </nav>
             </div>
+            <%- include('../partials/share-buttons') %>
 
             <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[40vh] my-6">
                 <div class="col-span-1 bg-white rounded-lg flex justify-center items-center">
@@ -31,7 +32,12 @@
                 <div class="p-6 col-span-1 bg-white border-2 border-slate-300 rounded">
                     <div class="w-full py-4 border-b-2 border-slate-200">
                         <h2 class="text-2xl font-semibold"><%= machine.brand_name %> <%= machine.model %></h2>
+                        <span class="flex items-center gap-1 text-slate-500 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg> 
+                            <%= machine.view_count.toLocaleString() %> ครั้ง
+                        </span>
                     </div>
+                    
 
                     <div class="grid grid-cols-[40px_2fr_1fr] items-center gap-4 p-2 md:text-lg">
                         <div>
@@ -42,7 +48,7 @@
                             ยี่ห้อ
                         </div>
 
-                        <div class="font-semibold text-start">
+                        <div class="text-start">
                             <%= machine.brand_name %>
                         </div>
 
@@ -56,7 +62,7 @@
                             รุ่น
                         </div>
 
-                        <div class="font-semibold text-start">
+                        <div class="text-start">
                             <%= machine.model %>
                         </div>
 
@@ -70,7 +76,7 @@
                             ระยะทำงานสูงสุด
                         </div>
 
-                        <div class="font-semibold text-start">
+                        <div class="text-start">
                             <%= machine.working_height %> เมตร
                         </div>
 
@@ -85,7 +91,7 @@
                             ความสูงพื้นยืน
                         </div>
 
-                        <div class="font-semibold text-start">
+                        <div class="text-start">
                             <%= machine.platform_height %> เมตร
                         </div>
 
@@ -100,7 +106,7 @@
                             กระเช้ารับน้ำหนัก
                         </div>
 
-                        <div class="font-semibold text-start">
+                        <div class="text-start">
                             <%= machine.capacity_load %> กิโลกรัม
                         </div>
 
@@ -115,7 +121,7 @@
                             น้ำหนักเครื่องจักร
                         </div>
 
-                        <div class="font-semibold text-start">
+                        <div class="text-start">
                             <%= machine.machine_weight %> กิโลกรัม
                         </div>
 
@@ -130,7 +136,7 @@
                             แหล่งพลังงาน
                         </div>
 
-                        <div class="font-semibold text-start">
+                        <div class="text-start">
                             <%= machine.power_th %>
                         </div>
 
@@ -159,7 +165,7 @@
 
 
     <section class="w-full bg-white font-[kanit] text-gray-700 py-10">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             <div class="w-full">
                 <h2 class="text-xl md:text-2xl py-4">สเปคเครื่องจักร</h2>
@@ -281,7 +287,7 @@
             </div>
 
             <div class="w-full">
-                <h2 class="text-xl md:text-2xl pb-4 pt-10">ขนาดเครื่องจักร</h2>
+                <h2 class="text-xl md:text-2xl py-4">ขนาดเครื่องจักร</h2>
                 <div class="w-full bg-white border-2 border-slate-300 rounded min-h-[20vh] p-4">
                     <table class="w-full md:text-lg md:text-base">
                         <tbody>
@@ -413,12 +419,12 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 py-10">
 
                 <% if (lowerMachine) { %>
-                <div class="grid grid-rows-2 rounded border-2 border-slate-300">
+                <div class="grid grid-rows-2 rounded border-2 border-slate-200 bg-white shadow">
                     <div class="p-4">
                         <img src="<%= lowerMachine.image_url %>" alt="<%= lowerMachine.model %>" class="w-full object-contain h-48 p-4">
                         
                     </div>
-                    <div class="p-4 bg-slate-200">
+                    <div class="p-4">
                         <div>
                             <h2 class="tracking-wide text-xl font-semibold"><%= lowerMachine.type_name %> <%= lowerMachine.platform_height %> เมตร</h2>
                             <p class="tracking-wide font-light"><%= lowerMachine.brand_name %> <%= lowerMachine.model %></p>
@@ -432,6 +438,10 @@
                             ดูรายละเอียด
                         </a>
                         </div>
+                                                <span class="flex items-center gap-1 text-slate-500 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg> 
+                            <%= machine.view_count.toLocaleString() %> ครั้ง
+                        </span>
 
                     </div>
 
@@ -441,12 +451,12 @@
 
 
                 <% if (higherMachine) { %>
-                                <div class="grid grid-rows-2 rounded border-2 border-slate-300">
+                <div class="grid grid-rows-2 rounded border-2 border-slate-200 bg-white shadow">
                     <div class="p-4">
                         <img src="<%= higherMachine.image_url %>" alt="<%= higherMachine.model %>" class="w-full object-contain h-48 p-4">
                         
                     </div>
-                    <div class="p-4 bg-slate-200">
+                    <div class="p-4">
                         <div>
                             <h2 class="tracking-wide text-xl font-semibold"><%= higherMachine.type_name %> <%= higherMachine.platform_height %> เมตร</h2>
                             <p class="tracking-wide font-light"><%= higherMachine.brand_name %> <%= higherMachine.model %></p>
@@ -460,6 +470,10 @@
                             ดูรายละเอียด
                         </a>
                         </div>
+                            <span class="flex items-center gap-1 text-slate-500 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg> 
+                                <%= machine.view_count.toLocaleString() %> ครั้ง
+                            </span>
 
                     </div>
 

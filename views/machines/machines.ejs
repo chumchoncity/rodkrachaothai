@@ -86,12 +86,12 @@
             
                 <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-10">
                     <% machines.forEach(machine => { %>
-                    <div class="grid grid-rows-2 rounded border-2 border-slate-300 shadow-md">
+                    <div class="grid grid-rows-2 rounded border-2 border-slate-200 shadow-md bg-white">
                         <div class="p-4">
                             <img src="<%= machine.image_url %>" alt="<%= machine.model %>" class="w-full object-contain h-48 p-4">
                             
                         </div>
-                        <div class="p-4 bg-slate-200">
+                        <div class="p-4">
                             <div>
                                 <h2 class="tracking-wide text-xl font-semibold"><%= machine.type_name %> <%= machine.platform_height %> เมตร</h2>
                                 <p class="tracking-wide font-light"><%= machine.brand_name %> <%= machine.model %></p>
@@ -105,6 +105,10 @@
                                 ดูรายละเอียด
                             </a>
                             </div>
+                            <span class="flex items-center gap-1 text-slate-500 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg> 
+                                <%= machine.view_count.toLocaleString() %>
+                            </span>
 
                         </div>
 

@@ -5,7 +5,17 @@ const session = require("express-session");
 const expressLayouts = require("express-ejs-layouts");
 const path = require("path");
 
+
+
 const app = express();
+
+app.use((req, res, next) => {
+
+    res.locals.req = req;
+
+    next();
+
+});
 
 app.set("view engine","ejs");
 

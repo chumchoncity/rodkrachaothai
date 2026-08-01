@@ -1,0 +1,70 @@
+<%
+const shareTitle =
+    typeof article !== 'undefined'
+        ? article.title
+        : `${machine.brand_name} ${machine.model}`;
+
+const shareText =
+    typeof article !== 'undefined'
+        ? (article.meta_description || article.title)
+        : `${machine.brand_name} ${machine.model} | รถกระเช้าไทย`;
+%>
+
+<div class="mt-8 flex justify-end">
+
+    <button
+        id="shareBtn"
+        type="button"
+        class="inline-flex items-center gap-2 px-5 py-3 text-blue-800 transition">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-share-3"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M13 4v4c-6.575 1.028 -9.02 6.788 -10 12c-.037 .206 5.384 -5.962 10 -6v4l8 -7l-8 -7" /></svg>
+
+        แชร์
+
+    </button>
+
+</div>
+
+<script>
+(() => {
+
+    const btn = document.getElementById("shareBtn");
+
+    if (!btn) return;
+
+    btn.addEventListener("click", async () => {
+
+        const data = {
+            title: "<%= shareTitle %>",
+            text: "<%= shareText %>",
+            url: window.location.href
+        };
+
+        if (navigator.share) {
+
+            try {
+                await navigator.share(data);
+            } catch (err) {
+                // ผู้ใช้กดยกเลิก
+            }
+
+        } else {
+
+            try {
+
+                await navigator.clipboard.writeText(window.location.href);
+
+                alert("คัดลอกลิงก์เรียบร้อย");
+
+            } catch (err) {
+
+                prompt("คัดลอกลิงก์นี้", window.location.href);
+
+            }
+
+        }
+
+    });
+
+})();
+</script>

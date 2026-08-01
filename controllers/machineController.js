@@ -59,6 +59,18 @@ exports.machineDetail = async (req, res) => {
         const title = `${machine.type_name} ${machine.brand_name} ${machine.model} ระยะทำงานสูง ${machine.working_height} เมตร`;
 
         const description = `${machine.type_name} ${machine.brand_name} รุ่น ${machine.model} ระยะความสูงทำงาน ${machine.working_height} เมตร พื้นยืนรองรับน้ำหนัก ${machine.capacity_load} กิโลกรัม ขับเคลื่อนด้วยพลังงาน ${machine.power_th}`;
+
+        if (!req.session.viewedMachines) {
+            req.session.viewedMachines = [];
+        }
+
+        if (!req.session.viewedMachines.includes(machine.id)) {
+            await machineModel.incrementView(machine.id);
+            req.session.viewedMachines.push(machine.id);
+            machine.views++;
+        }
+
+        const currentUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
         
     
         res.render("machines/machineDetail", {
@@ -66,6 +78,7 @@ exports.machineDetail = async (req, res) => {
             machine,
             higherMachine,
             lowerMachine,
+            currentUrl,
             meta: {
 
                 title,

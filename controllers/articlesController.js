@@ -50,6 +50,8 @@ exports.articleDetail = async (req, res) => {
         }
 
         const articles = await articleModel.latestArticles();
+
+        const currentUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
         
         
     
@@ -57,6 +59,7 @@ exports.articleDetail = async (req, res) => {
             currentPage: "article-detail",
             article,
             articles,
+            currentUrl,
             meta: {
 
                 title:article.meta_title || "บทความรถกระเช้าไทย",

@@ -69,6 +69,7 @@ router.get('/sitemap.xml', async (req, res) => {
                 xml +=
 '<url>' +
 `<loc>https://rodkrachaothai.com/articles/${article.slug}</loc>` +
+`<lastmod>${new Date(article.updated_at).toISOString()}</lastmod>` +
 '<changefreq>daily</changefreq>' +
 '<priority>0.8</priority>' +
 '</url>';

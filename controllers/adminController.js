@@ -15,6 +15,8 @@ exports.adminDashboard = async (req, res) => {
     const totalArticles = await adminModel.getTotalArticles();
     const publishedArticles = await adminModel.getPublishedArticles();
     const totalViews = await adminModel.getTotalViewArticles();
+    const totalMachines = await adminModel.getTotalMachines();
+    const totalViewsMachines = await adminModel.getTotalViewMachines();
 
     res.render("admin/index", {
         layout: "layouts/admin-layout",
@@ -23,7 +25,9 @@ exports.adminDashboard = async (req, res) => {
         userId: userId,
         totalArticles,
         publishedArticles,
-        totalViews
+        totalViews,
+        totalMachines,
+        totalViewsMachines
     });
     } catch (error) {
         console.error(error);

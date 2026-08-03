@@ -36,3 +36,25 @@ exports.getTotalViewArticles = async () => {
 
     return rows[0].totalViews;
 };
+
+//admin/dashboard:total machines
+exports.getTotalMachines = async () => {
+    const [rows] = await db.query(`
+        SELECT COUNT(*)
+        AS total
+        FROM machines
+    `);
+
+    return rows[0].total;
+};
+
+//admin/dashboard:published machines
+exports.getTotalViewMachines = async () => {
+    const [rows] = await db.query(`
+        SELECT COALESCE(SUM(view_count), 0)
+        AS totalViews
+        FROM machines
+    `);
+
+    return rows[0].totalViews;
+};

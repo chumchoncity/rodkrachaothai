@@ -84,10 +84,8 @@ exports.machineDetail = async (req, res) => {
                 title,
                 description,
 
-                image: machine.image
-                    ? `https://rodkrachaothai.com/${machine.image_url}`
-                    : "https://rodkrachaothai.com/images/default-og.png",
-
+                image: 
+                    `https://rodkrachaothai.com/${machine.image_url}`,
                 url:
                     `https://rodkrachaothai.com/machines/${machine.slug}`
                 }       

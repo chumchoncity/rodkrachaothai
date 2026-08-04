@@ -167,6 +167,7 @@ exports.updateArticle = async (req, res) => {
     const userId = req.session.user.id;
     const id = req.params.id;
     let featuredImage = req.body.old_featured_image;
+    let ogImage = featuredImage;
 
         if (req.file) {
             featuredImage = req.file.filename;

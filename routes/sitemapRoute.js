@@ -11,6 +11,8 @@ router.get('/sitemap.xml', async (req, res) => {
         const machines = await sitemapModel.getAllMachinesSitemap();
         const articles = await sitemapModel.getAllArticlesSitemap();
 
+        
+
         res.set('Content-Type', 'text/xml');
 
         let xml =
@@ -66,10 +68,16 @@ router.get('/sitemap.xml', async (req, res) => {
 
             articles.forEach(article => {
 
+                const date = new Date(article.updated_at || article.created_at);
+
+                const lastmod = isNaN(date.getTime())
+                    ? new Date().toISOString()
+                    : date.toISOString();
+
                 xml +=
 '<url>' +
 `<loc>https://rodkrachaothai.com/articles/${article.slug}</loc>` +
-`<lastmod>${new Date(article.updated_at).toISOString()}</lastmod>` +
+`<lastmod>${lastmod}</lastmod>` +
 '<changefreq>daily</changefreq>' +
 '<priority>0.8</priority>' +
 '</url>';

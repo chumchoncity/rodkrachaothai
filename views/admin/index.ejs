@@ -9,8 +9,8 @@
                 </span>
             </div>
             <div class="flex flex-col items-center md:items-start flex flex-col items-center md:items-start col-span-2 py-4 text-slate-400">
-                <h1 class="text-lg">บทความทั้งหมด</h1>
-                <p class="text-4xl"><%= totalArticles %></p>
+                <h1 class="text-md md:text-lg">บทความทั้งหมด</h1>
+                <p class="text-2xl"><%= totalArticles %></p>
 
             </div>
             
@@ -23,8 +23,8 @@
                 
             </div>
             <div class="flex flex-col items-center md:items-start col-span-2 py-4 text-slate-400">
-                <h1 class="text-lg">บทความที่เผยแพร่</h1>
-                <p class="text-4xl"><%= publishedArticles %></p>
+                <h1 class="text-md md:text-lg">บทความที่เผยแพร่</h1>
+                <p class="text-2xl"><%= publishedArticles %></p>
 
             </div>
             
@@ -37,8 +37,8 @@
                 
             </div>
             <div class="flex flex-col items-center md:items-start col-span-2 py-4 text-slate-400">
-                <h1 class="text-lg">ยอดวิวบทความ</h1>
-                <p class="text-4xl"><%= Number(totalViews).toLocaleString("en-US") %></p>
+                <h1 class="text-md md:text-lg">ยอดวิวบทความ</h1>
+                <p class="text-2xl"><%= Number(totalViews).toLocaleString("en-US") %></p>
 
             </div>
             
@@ -52,8 +52,8 @@
                 
             </div>
             <div class="flex flex-col items-center md:items-start col-span-2 py-4 text-slate-400">
-                <h1 class="text-lg">เครื่องจักรทั้งหมด</h1>
-                <p class="text-4xl"><%= Number(totalMachines).toLocaleString("en-US") %></p>
+                <h1 class="text-md md:text-lg">เครื่องจักรทั้งหมด</h1>
+                <p class="text-2xl"><%= Number(totalMachines).toLocaleString("en-US") %></p>
 
             </div>
             
@@ -66,8 +66,8 @@
                 
             </div>
             <div class="flex flex-col items-center md:items-start col-span-2 py-4 text-slate-400">
-                <h1 class="text-lg">ยอดวิวเครื่องจักร</h1>
-                <p class="text-4xl"><%= Number(totalViewsMachines).toLocaleString("en-US") %></p>
+                <h1 class="text-md md:text-lg">ยอดวิวเครื่องจักร</h1>
+                <p class="text-2xl"><%= Number(totalViewsMachines).toLocaleString("en-US") %></p>
 
             </div>
             
@@ -75,7 +75,7 @@
 
     </div>
 
-    <div class="w-full mt-6 md:p-4">
+    <div class="w-full mt-6 md:p-4 my-10">
         <div class="bg-slate-800 rounded shadow p-4 text-slate-400">
 
             <h2 class="font-semibold text-lg mb-4 text-slate-100">
@@ -86,11 +86,11 @@
 
                 <a
                     href="/machines/<%= machine.slug %>"
-                    class="flex items-center gap-4 py-3 px-2 border-b hover:bg-slate-700 transition rounded">
+                    class="flex items-center gap-4 py-3 px-2 border-b hover:bg-slate-700 transition">
 
                     <img
                         src="<%= machine.image_url %>"
-                        class="w-16 h-16 rounded-lg object-cover">
+                        class="h-16 rounded object-cover">
 
                     <div class="flex-1">
 

@@ -49,15 +49,15 @@ exports.login = async (req, res) => {
         return res.redirect(redirectUrl);
     };
 
-        let maxAge;
+    //     let maxAge;
 
-    if(user.role === "admin"){
-        maxAge = 1000 * 60 * 30; // 30 นาที
-    } else if(user.role === "company"){
-        maxAge = 1000 * 60 * 60 * 2; // 2 ชั่วโมง
-    } else {
-        maxAge = 1000 * 60 * 60 * 24 * 7; // 7 วัน
-    };
+    // if(user.role === "admin"){
+    //     maxAge = 1000 * 60 * 30; // 30 นาที
+    // } else if(user.role === "company"){
+    //     maxAge = 1000 * 60 * 60 * 2; // 2 ชั่วโมง
+    // } else {
+    //     maxAge = 1000 * 60 * 60 * 24 * 7; // 7 วัน
+    // };
 
     console.log("SESSION:", req.session);
 

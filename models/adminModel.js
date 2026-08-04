@@ -58,3 +58,14 @@ exports.getTotalViewMachines = async () => {
 
     return rows[0].totalViews;
 };
+//admin/dashboard:popular machines
+exports.getPopularMachines = async (limit = 5) => {
+    const [rows] = await db.query(`
+        SELECT *
+        FROM machines
+        ORDER BY view_count DESC
+        LIMIT ?
+    `, [limit]);
+
+    return rows;
+};

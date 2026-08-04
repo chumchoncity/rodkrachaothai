@@ -75,7 +75,7 @@
                             <% if(item.id != article.id){ %>
 
                                 <a href="/articles/<%= item.slug %>"
-                                    class="flex gap-4 mb-5 bg-white rounded-xl p-3 hover:shadow-lg transition">
+                                    class="flex gap-4 mb-5 bg-white rounded p-3 hover:shadow-lg transition">
 
                                     <img
                                         src="/images/articles/<%= item.featured_image %>"
@@ -88,7 +88,11 @@
                                         </h3>
 
                                         <p class="text-sm text-gray-500 mt-2">
-                                            <%= item.created_at %>
+                                            <%= new Date(item.created_at).toLocaleDateString('th-TH', {
+                                            day: 'numeric',
+                                            month: 'short',
+                                            year: 'numeric'
+                                            }) %>
                                         </p>
 
                                     </div>

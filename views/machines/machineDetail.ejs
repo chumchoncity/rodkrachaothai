@@ -297,7 +297,7 @@
                                     ความสูงพื้นยืน
                                 </th>
                                 <td class="px-6 py-4 text-gray-900">
-                                    <%= machine.platform_height_stowed %> เมตร
+                                    <%= Number(machine.platform_height_stowed) === 0 ? '-' : machine.platform_height_stowed %> เมตร
                                 </td>
                             </tr>
 
@@ -306,7 +306,8 @@
                                     ความสูงรวมราวกันตก
                                 </th>
                                 <td class="px-6 py-4">
-                                    <%= machine.platform_railing_height || '-' %> เมตร
+                                   
+                                    <%= Number(machine.platform_railing_height) === 0 ? '-' : machine.platform_railing_height %> เมตร
                                 </td>
                             </tr>
 
@@ -333,7 +334,8 @@
                                     ขยายพื้นกระเช้า
                                 </th>
                                 <td class="px-6 py-4">
-                                    <%= machine.platform_extension || '-' %> เมตร
+                                    
+                                    <%= Number(machine.platform_extension) === 0 ? '-' : machine.platform_extension %> เมตร
                                 </td>
                             </tr>
 
